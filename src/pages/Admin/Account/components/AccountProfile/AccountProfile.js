@@ -42,15 +42,16 @@ class AccountProfile extends Component {
             accept="image/*"
             className={classes.input}
             id="icon-button-file"
-            type="file"
             onChange={onUpload}
+            type="file"
           />
           <label htmlFor="icon-button-file">
             <Button
               className={classes.uploadButton}
-              component="span"
               color="primary"
-              variant="text">
+              component="span"
+              variant="text"
+            >
               Upload picture
             </Button>
           </label>

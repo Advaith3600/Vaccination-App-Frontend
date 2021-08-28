@@ -45,11 +45,11 @@ class ReservationList extends Component {
     return (
       <div className={classes.root}>
         <ReservationsToolbar
-          reservations={filteredReservations}
-          search={search}
-          onChangeSearch={this.onChangeSearch}
           mode={mode}
           onChangeMode={this.onChangeMode}
+          onChangeSearch={this.onChangeSearch}
+          reservations={filteredReservations}
+          search={search}
         />
         <div className={classes.content}>
           {!filteredReservations.length ? (
@@ -58,15 +58,15 @@ class ReservationList extends Component {
             </div>
           ) : mode === 'list' ? (
             <ReservationsTable
-              reservations={filteredReservations}
-              movies={movies}
               cinemas={cinemas}
+              movies={movies}
+              reservations={filteredReservations}
             />
           ) : (
             <ReservationsCalendar
-              reservations={filteredReservations}
-              movies={movies}
               cinemas={cinemas}
+              movies={movies}
+              reservations={filteredReservations}
             />
           )}
         </div>

@@ -66,17 +66,17 @@ function MovieCarousel({ carouselClass, movies = [], title, to = null }) {
   return (
     <div className={carouselClass}>
       <div className={classes.container}>
-        <Typography className={classes.h2} variant="h2" color="inherit">
+        <Typography className={classes.h2} color="inherit" variant="h2">
           {title}
         </Typography>
         {to==null? null
-           :
-          <Link to={to} style={{ textDecoration: 'none' }}>
-          <Button className={classes.button} color="primary">
+          :
+          <Link style={{ textDecoration: 'none' }} to={to}>
+            <Button className={classes.button} color="primary">
             Explore All
-          </Button>
-        </Link>
-      }
+            </Button>
+          </Link>
+        }
       </div>
       <Slider {...settings} className={classes.slider}>
         {movies.map(movie => (

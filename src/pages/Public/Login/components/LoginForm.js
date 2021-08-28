@@ -69,7 +69,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function LoginForm(props) {
-  const { facebookLogin, googleLogin, isAuthenticated, user, redirect } = props;
+  const { isAuthenticated, user, redirect } = props;
   const classes = useStyles();
   const [values, setValues] = useState({ email: '', password: '' });
 
@@ -120,7 +120,8 @@ function LoginForm(props) {
         color="primary"
         onClick={() => props.login(values.email, values.password)}
         size="large"
-        variant="contained">
+        variant="contained"
+      >
         Login now
       </Button>
       <Typography className={classes.register} variant="body1">

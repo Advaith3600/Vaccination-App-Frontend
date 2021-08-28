@@ -7,12 +7,12 @@ const Alert = ({ alerts }) =>
   alerts.length > 0 &&
   alerts.map((alert, index) => (
     <CustomizedSnackbar
-      key={`custom-alert-${index}-${alert.id}`}
-      isOpen={true}
-      vertical="top"
       horizontal="right"
-      variant={alert.alertType}
+      isOpen
+      key={`custom-alert-${index}-${alert.id}`}
       message={alert.msg}
+      variant={alert.alertType}
+      vertical="top"
     />
   ));
 

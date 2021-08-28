@@ -374,56 +374,57 @@ class BookingPage extends Component {
     }
 
     return (
-      <Container maxWidth="xl" className={classes.container}>
+      <Container className={classes.container} maxWidth="xl">
         <Grid container spacing={2} style={{ height: '100%' }}>
           <MovieInfo movie={movie} />
-          <Grid item lg={9} xs={12} md={12}>
+          <Grid item lg={9} md={12} xs={12}>
             <BookingForm
               cinemas={uniqueCinemas}
-              times={uniqueTimes}
-              showtimes={showtimes}
-              selectedCinema={selectedCinema}
-              selectedDate={selectedDate}
-              selectedTime={selectedTime}
               onChangeCinema={this.onChangeCinema}
               onChangeDate={this.onChangeDate}
               onChangeTime={this.onChangeTime}
+              selectedCinema={selectedCinema}
+              selectedDate={selectedDate}
+              selectedTime={selectedTime}
+              showtimes={showtimes}
+              times={uniqueTimes}
             />
             {showInvitation && !!selectedSeats.length && (
               <BookingInvitation
-                selectedSeats={selectedSeats}
-                sendInvitations={this.sendInvitations}
                 ignore={resetCheckout}
                 invitations={invitations}
-                onSetInvitation={setInvitation}
                 onDownloadPDF={this.jsPdfGenerator}
+                onSetInvitation={setInvitation}
+                selectedSeats={selectedSeats}
+                sendInvitations={this.sendInvitations}
               />
             )}
 
             {cinema && selectedCinema && selectedTime && !showInvitation && (
               <>
                 <BookingSeats
-                  seats={seats}
                   onSelectSeat={(indexRow, index) =>
                     this.onSelectSeat(indexRow, index)
                   }
+                  seats={seats}
                 />
                 <BookingCheckout
-                  user={user}
-                  ticketPrice={cinema.ticketPrice}
+                  onBookSeats={() => this.checkout()}
                   seatsAvailable={cinema.seatsAvailable}
                   selectedSeats={selectedSeats.length}
-                  onBookSeats={() => this.checkout()}
+                  ticketPrice={cinema.ticketPrice}
+                  user={user}
                 />
               </>
             )}
           </Grid>
         </Grid>
         <ResponsiveDialog
-          id="Edit-cinema"
-          open={showLoginPopup}
           handleClose={() => toggleLoginPopup()}
-          maxWidth="sm">
+          id="Edit-cinema"
+          maxWidth="sm"
+          open={showLoginPopup}
+        >
           <LoginForm />
         </ResponsiveDialog>
       </Container>

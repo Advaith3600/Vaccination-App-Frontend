@@ -73,89 +73,90 @@ class AddUser extends Component {
 
     return (
       <div className={rootClassName}>
-        <Typography variant="h4" className={classes.title}>
+        <Typography className={classes.title} variant="h4">
           {title}
         </Typography>
         <form autoComplete="off" noValidate>
           <div className={classes.field}>
             <TextField
-              fullWidth
               className={classes.textField}
+              fullWidth
               helperText="Please specify the Full Name"
               label="Full Name"
               margin="dense"
-              required
-              value={name}
-              variant="outlined"
               onChange={event =>
                 this.handleFieldChange('name', event.target.value)
               }
+              required
+              value={name}
+              variant="outlined"
             />
             <TextField
-              fullWidth
               className={classes.textField}
+              fullWidth
               label="Username"
               margin="dense"
-              required
-              value={username}
-              variant="outlined"
               onChange={event =>
                 this.handleFieldChange('username', event.target.value)
               }
+              required
+              value={username}
+              variant="outlined"
             />
           </div>
           <div className={classes.field}>
             <TextField
-              fullWidth
               className={classes.textField}
+              fullWidth
               label="Email"
               margin="dense"
-              required
-              value={email}
-              variant="outlined"
               onChange={event =>
                 this.handleFieldChange('email', event.target.value)
               }
+              required
+              value={email}
+              variant="outlined"
             />
             <TextField
-              fullWidth
               className={classes.textField}
+              fullWidth
               label="Password"
               margin="dense"
-              required
-              value={password}
-              variant="outlined"
               onChange={event =>
                 this.handleFieldChange('password', event.target.value)
               }
+              required
+              value={password}
+              variant="outlined"
             />
           </div>
           <div className={classes.field}>
             <TextField
-              fullWidth
               className={classes.textField}
+              fullWidth
               label="Phone"
               margin="dense"
-              required
-              value={phone}
-              variant="outlined"
               onChange={event =>
                 this.handleFieldChange('phone', event.target.value)
               }
+              required
+              value={phone}
+              variant="outlined"
             />
             <TextField
-              fullWidth
-              select
               className={classes.textField}
+              fullWidth
               helperText="Admin or Guest"
               label="Role"
               margin="dense"
-              required
-              value={role}
-              variant="outlined"
               onChange={event =>
                 this.handleFieldChange('role', event.target.value)
-              }>
+              }
+              required
+              select
+              value={role}
+              variant="outlined"
+            >
               {['admin', 'guest'].map(role => (
                 <MenuItem key={`role-${role}`} value={role}>
                   {role}
@@ -168,8 +169,9 @@ class AddUser extends Component {
         <Button
           className={classes.buttonFooter}
           color="primary"
+          onClick={submitAction}
           variant="contained"
-          onClick={submitAction}>
+        >
           {submitButton}
         </Button>
       </div>

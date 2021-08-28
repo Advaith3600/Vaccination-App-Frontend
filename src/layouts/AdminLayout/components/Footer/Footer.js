@@ -12,7 +12,7 @@ export default function Footer() {
       </Typography>
       <Typography variant="caption">
         Crafted with love |{' '}
-        <Link href="http://georgesimos.com/" target="_blank" rel="noopener">
+        <Link href="http://georgesimos.com/" rel="noopener" target="_blank">
           George Simos
         </Link>
       </Typography>

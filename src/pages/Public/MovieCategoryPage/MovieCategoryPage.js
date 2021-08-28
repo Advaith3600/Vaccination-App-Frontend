@@ -32,27 +32,28 @@ function MovieCategoryPage(props) {
     <Grid container spacing={2}>
       {!['nowShowing', 'comingSoon'].includes(category) ? (
         <Grid item xs={12}>
-          <Typography className={classes.title} variant="h2" color="inherit">
+          <Typography className={classes.title} color="inherit" variant="h2">
             Category Does not exist.
           </Typography>
         </Grid>
       ) : (
         <>
           <Grid item xs={12}>
-            <Typography className={classes.title} variant="h2" color="inherit">
+            <Typography className={classes.title} color="inherit" variant="h2">
               {category}
             </Typography>
           </Grid>
           <Grid
-            container
-            item
-            xs={12}
-            direction="column"
             alignItems="center"
+            container
+            direction="column"
+            item
             justify="center"
-            spacing={2}>
+            spacing={2}
+            xs={12}
+          >
             {movies.map(movie => (
-              <Grid key={movie._id} item className={classes.fullWidth}>
+              <Grid className={classes.fullWidth} item key={movie._id}>
                 <ResponsiveMovieCard movie={movie} />
               </Grid>
             ))}

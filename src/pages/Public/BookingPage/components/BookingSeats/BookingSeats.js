@@ -49,54 +49,59 @@ export default function BookingSeats(props) {
 
   return (
     <Fragment>
-      <Box width={1} pt={15}>
+      <Box pt={15} width={1}>
         {seats.length > 0 &&
           seats.map((seatRows, indexRow) => (
-            <div key={indexRow} className={classes.row}>
+            <div className={classes.row} key={indexRow}>
               {seatRows.map((seat, index) => (
                 <Box
-                  key={`seat-${index}`}
-                  onClick={() => onSelectSeat(indexRow, index)}
-                  className={classes.seat}
                   bgcolor={
                     seat === 1
                       ? 'rgb(65, 66, 70)'
                       : seat === 2
-                      ? 'rgb(120, 205, 4)'
-                      : seat === 3
-                      ? 'rgb(14, 151, 218)'
-                      : 'rgb(96, 93, 169)'
-                  }>
+                        ? 'rgb(120, 205, 4)'
+                        : seat === 3
+                          ? 'rgb(14, 151, 218)'
+                          : 'rgb(96, 93, 169)'
+                  }
+                  className={classes.seat}
+                  key={`seat-${index}`}
+                  onClick={() => onSelectSeat(indexRow, index)}
+                >
                   {index + 1}
                 </Box>
               ))}
             </div>
           ))}
       </Box>
-      <Box width={1} mt={10}>
+      <Box mt={10} width={1}>
         <div className={classes.seatInfoContainer}>
           <div className={classes.seatInfo}>
             <div
               className={classes.seatInfoLabel}
-              style={{ background: 'rgb(96, 93, 169)' }}></div>
+              style={{ background: 'rgb(96, 93, 169)' }}
+            />
             Seat Available
           </div>
           <div className={classes.seatInfo}>
             <div
               className={classes.seatInfoLabel}
-              style={{ background: 'rgb(65, 66, 70)' }}></div>
+              style={{ background: 'rgb(65, 66, 70)' }}
+            />
             Reserved Seat
           </div>
           <div className={classes.seatInfo}>
             <div
               className={classes.seatInfoLabel}
-              style={{ background: 'rgb(120, 205, 4)' }}></div>
+              style={{ background: 'rgb(120, 205, 4)' }}
+            />
             Selected Seat
           </div>
           <div className={classes.seatInfo}>
             <div
               className={classes.seatInfoLabel}
-              style={{ background: 'rgb(14, 151, 218)' }}></div>
+              style={{ background: 'rgb(14, 151, 218)' }}
+            />
             Recommended Seat
           </div>
         </div>

@@ -50,10 +50,10 @@ const SnackbarContentWrapper = props => {
 
   return (
     <SnackbarContent
-      className={classNames(classes[variant], className)}
       aria-describedby="client-snackbar"
+      className={classNames(classes[variant], className)}
       message={
-        <span id="client-snackbar" className={classes.message}>
+        <span className={classes.message} id="client-snackbar">
           <Icon className={classNames(classes.icon, classes.iconVariant)} />
           {message}
         </span>

@@ -43,10 +43,10 @@ class ShowtimeList extends Component {
     return (
       <div className={classes.root}>
         <ShowtimesToolbar
+          deleteShowtime={this.handleDeleteShowtime}
+          selectedShowtimes={selectedShowtimes}
           showtimes={showtimes}
           toggleDialog={toggleDialog}
-          selectedShowtimes={selectedShowtimes}
-          deleteShowtime={this.handleDeleteShowtime}
         />
         <div className={classes.content}>
           {!showtimes.length ? (
@@ -54,16 +54,17 @@ class ShowtimeList extends Component {
           ) : (
             <ShowtimesTable
               onSelectShowtime={selectShowtime}
-              selectedShowtimes={selectedShowtimes}
               selectAllShowtimes={selectAllShowtimes}
+              selectedShowtimes={selectedShowtimes}
               showtimes={showtimes}
             />
           )}
         </div>
         <ResponsiveDialog
+          handleClose={() => toggleDialog()}
           id="Add-showtime"
           open={openDialog}
-          handleClose={() => toggleDialog()}>
+        >
           <AddShowtime
             selectedShowtime={showtimes.find(
               showtime => showtime._id === selectedShowtimes[0]

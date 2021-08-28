@@ -43,15 +43,15 @@ function Checkin(props) {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <Typography className={classes.title} variant="h2" color="inherit">
+        <Typography className={classes.title} color="inherit" variant="h2">
           Check In
         </Typography>
         {reservation && reservation.checkin ? (
-          <Typography variant="body1" color="primary" align="center">
+          <Typography align="center" color="primary" variant="body1">
             Check in for user: {reservation.username} was successful.
           </Typography>
         ) : (
-          <Typography variant="body1" color="error" align="center">
+          <Typography align="center" color="error" variant="body1">
             Something went wrong...
           </Typography>
         )}

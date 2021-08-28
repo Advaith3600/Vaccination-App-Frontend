@@ -36,97 +36,97 @@ const Routes = () => {
     <Suspense fallback={<Loading />}>
       <Router>
         <Switch>
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
+          <Route component={Login} exact path="/login" />
+          <Route component={Register} exact path="/register" />
 
           <WithLayoutRoute
-            exact
-            path="/checkin/:reservationId"
             component={Checkin}
+            exact
             layout={PublicLayout}
+            path="/checkin/:reservationId"
           />
 
           <WithLayoutRoute
-            exact
-            path="/"
-            layout={PublicLayout}
             component={HomePage}
+            exact
+            layout={PublicLayout}
+            path="/"
           />
           <WithLayoutRoute
-            exact
-            path="/mydashboard"
-            layout={PublicLayout}
             component={MyDashboard}
+            exact
+            layout={PublicLayout}
+            path="/mydashboard"
           />
           <WithLayoutRoute
-            exact
-            path="/cinemas"
-            layout={PublicLayout}
             component={CinemasPage}
+            exact
+            layout={PublicLayout}
+            path="/cinemas"
           />
           <WithLayoutRoute
-            exact
-            path="/movie/category/:category"
-            layout={PublicLayout}
             component={MovieCategoryPage}
+            exact
+            layout={PublicLayout}
+            path="/movie/category/:category"
           />
           <WithLayoutRoute
-            exact
-            path="/movie/:id"
-            layout={PublicLayout}
-            layoutProps={{ withFooter: false }}
             component={MoviePage}
-          />
-          <WithLayoutRoute
             exact
-            path="/movie/booking/:id"
             layout={PublicLayout}
             layoutProps={{ withFooter: false }}
+            path="/movie/:id"
+          />
+          <WithLayoutRoute
             component={BookingPage}
+            exact
+            layout={PublicLayout}
+            layoutProps={{ withFooter: false }}
+            path="/movie/booking/:id"
           />
           <ProtectedRoute
-            exact
-            path="/admin/dashboard"
-            layout={AdminLayout}
             component={DashboardPage}
+            exact
+            layout={AdminLayout}
+            path="/admin/dashboard"
           />
           <ProtectedRoute
-            exact
-            path="/admin/users"
-            layout={AdminLayout}
             component={User}
+            exact
+            layout={AdminLayout}
+            path="/admin/users"
           />
           <ProtectedRoute
-            exact
-            path="/admin/showtimes"
-            layout={AdminLayout}
             component={ShowtimeList}
+            exact
+            layout={AdminLayout}
+            path="/admin/showtimes"
           />
           <ProtectedRoute
-            exact
-            path="/admin/reservations"
-            layout={AdminLayout}
             component={ReservationList}
+            exact
+            layout={AdminLayout}
+            path="/admin/reservations"
           />
           <ProtectedRoute
-            exact
-            path="/admin/cinemas"
-            layout={AdminLayout}
             component={CinemaList}
+            exact
+            layout={AdminLayout}
+            path="/admin/cinemas"
           />
           <ProtectedRoute
-            exact
-            path="/admin/movies"
-            layout={AdminLayout}
             component={MovieList}
+            exact
+            layout={AdminLayout}
+            path="/admin/movies"
           />
           <ProtectedRoute
-            exact
-            path="/admin/account"
-            layout={AdminLayout}
             component={Account}
+            exact
+            layout={AdminLayout}
+            path="/admin/account"
           />
-          <Route path="*" component={() => '404 NOT FOUND'} />
+          <Route component={() => '404 NOT FOUND'} path="*" />
         </Switch>
       </Router>
     </Suspense>

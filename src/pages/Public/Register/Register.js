@@ -68,7 +68,8 @@ class Register extends Component {
               <div className={classes.contentHeader}>
                 <IconButton
                   className={classes.backButton}
-                  onClick={this.handleBack}>
+                  onClick={this.handleBack}
+                >
                   <ArrowBackIcon />
                 </IconButton>
               </div>
@@ -85,51 +86,51 @@ class Register extends Component {
                       className={classes.textField}
                       label="Full name"
                       name="name"
-                      value={values.name}
                       onChange={event =>
                         this.handleFieldChange('name', event.target.value)
                       }
+                      value={values.name}
                       variant="outlined"
                     />
                     <TextField
                       className={classes.textField}
                       label="User name"
                       name="username"
-                      value={values.username}
                       onChange={event =>
                         this.handleFieldChange('username', event.target.value)
                       }
+                      value={values.username}
                       variant="outlined"
                     />
                     <TextField
                       className={classes.textField}
                       label="Email address"
                       name="email"
-                      value={values.email}
                       onChange={event =>
                         this.handleFieldChange('email', event.target.value)
                       }
+                      value={values.email}
                       variant="outlined"
                     />
                     <TextField
                       className={classes.textField}
                       label="Mobile Phone"
                       name="phone"
-                      value={values.phone}
-                      variant="outlined"
                       onChange={event =>
                         this.handleFieldChange('phone', event.target.value)
                       }
+                      value={values.phone}
+                      variant="outlined"
                     />
                     <TextField
                       className={classes.textField}
                       label="Password"
-                      type="password"
-                      value={values.password}
-                      variant="outlined"
                       onChange={event =>
                         this.handleFieldChange('password', event.target.value)
                       }
+                      type="password"
+                      value={values.password}
+                      variant="outlined"
                     />
                     <FileUpload
                       className={classes.upload}
@@ -151,7 +152,8 @@ class Register extends Component {
                       />
                       <Typography
                         className={classes.policyText}
-                        variant="body1">
+                        variant="body1"
+                      >
                         I have read the &nbsp;
                         <Link className={classes.policyUrl} to="#">
                           Terms and Conditions
@@ -167,7 +169,8 @@ class Register extends Component {
                     disabled={!isValid}
                     onClick={this.handleRegister}
                     size="large"
-                    variant="contained">
+                    variant="contained"
+                  >
                     Register now
                   </Button>
 

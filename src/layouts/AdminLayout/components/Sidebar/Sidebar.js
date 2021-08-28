@@ -27,7 +27,8 @@ class Sidebar extends Component {
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/admin/dashboard">
+            to="/admin/dashboard"
+          >
             <ListItemIcon className={classes.listItemIcon}>
               <DashboardIcon />
             </ListItemIcon>
@@ -40,7 +41,8 @@ class Sidebar extends Component {
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/admin/movies">
+            to="/admin/movies"
+          >
             <ListItemIcon className={classes.listItemIcon}>
               <DashboardIcon />
             </ListItemIcon>
@@ -53,7 +55,8 @@ class Sidebar extends Component {
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/admin/cinemas">
+            to="/admin/cinemas"
+          >
             <ListItemIcon className={classes.listItemIcon}>
               <DashboardIcon />
             </ListItemIcon>
@@ -66,7 +69,8 @@ class Sidebar extends Component {
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/admin/showtimes">
+            to="/admin/showtimes"
+          >
             <ListItemIcon className={classes.listItemIcon}>
               <PeopleIcon />
             </ListItemIcon>
@@ -79,7 +83,8 @@ class Sidebar extends Component {
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/admin/reservations">
+            to="/admin/reservations"
+          >
             <ListItemIcon className={classes.listItemIcon}>
               <PeopleIcon />
             </ListItemIcon>
@@ -93,7 +98,8 @@ class Sidebar extends Component {
               activeClassName={classes.activeListItem}
               className={classes.listItem}
               component={NavLink}
-              to="/admin/users">
+              to="/admin/users"
+            >
               <ListItemIcon className={classes.listItemIcon}>
                 <PeopleIcon />
               </ListItemIcon>
@@ -107,7 +113,8 @@ class Sidebar extends Component {
             activeClassName={classes.activeListItem}
             className={classes.listItem}
             component={NavLink}
-            to="/admin/account">
+            to="/admin/account"
+          >
             <ListItemIcon className={classes.listItemIcon}>
               <AccountBoxIcon />
             </ListItemIcon>
@@ -125,12 +132,14 @@ class Sidebar extends Component {
             <ListSubheader className={classes.listSubheader}>
               Support
             </ListSubheader>
-          }>
+          }
+        >
           <ListItem
             className={classes.listItem}
             component="a"
             href="http://georgesimos.com"
-            target="_blank">
+            target="_blank"
+          >
             <ListItemIcon className={classes.listItemIcon}>
               <InfoIcon />
             </ListItemIcon>

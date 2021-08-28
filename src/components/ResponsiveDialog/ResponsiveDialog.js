@@ -22,19 +22,20 @@ const ResponsiveDialog = ({
 
   return (
     <Dialog
+      aria-labelledby={id}
       fullScreen={fullScreen}
-      fullWidth={true}
+      fullWidth
       maxWidth={maxWidth}
-      open={open}
       onClose={handleClose}
-      aria-labelledby={id}>
+      open={open}
+    >
       <DialogTitle id={id}>{title}</DialogTitle>
       <DialogContent>
         <DialogContentText>{contentText}</DialogContentText>
         {children}
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose} color="primary" autoFocus>
+        <Button autoFocus color="primary" onClick={handleClose}>
           Done
         </Button>
       </DialogActions>

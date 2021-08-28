@@ -17,12 +17,13 @@ const CustomizedSnackbar = props => {
         vertical,
         horizontal
       }}
-      open={isOpen}>
+      open={isOpen}
+    >
       <SnackbarContentWrapper
-        style={{ color: '#fff' }}
-        // onClose={handleClose}
-        variant={variant}
         message={message}
+        // onClose={handleClose}
+        style={{ color: '#fff' }}
+        variant={variant}
       />
     </Snackbar>
   );

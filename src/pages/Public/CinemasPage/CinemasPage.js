@@ -25,19 +25,20 @@ function CinemasPage(props) {
     <Container maxWidth="xl">
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Typography className={classes.title} variant="h2" color="inherit">
+          <Typography className={classes.title} color="inherit" variant="h2">
             Our Cinemas
           </Typography>
         </Grid>
         <Grid
+          alignItems="center"
           container
           item
-          xs={12}
-          alignItems="center"
           justify="flex-start"
-          spacing={2}>
+          spacing={2}
+          xs={12}
+        >
           {cinemas.map(cinema => (
-            <Grid key={cinema._id} item xs={12} md={4} lg={3}>
+            <Grid item key={cinema._id} lg={3} md={4} xs={12}>
               <CinemaCard cinema={cinema} />
             </Grid>
           ))}

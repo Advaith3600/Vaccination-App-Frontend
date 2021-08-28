@@ -35,51 +35,54 @@ export default function BookingInvitation(props) {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <Typography variant="h4" align="center">
+        <Typography align="center" variant="h4">
           Guest Invitation
         </Typography>
         <Typography
+          align="center"
           className={classes.successInfo}
           variant="body1"
-          align="center">
+        >
           You have successfuly booked your seats. Please fill the emails below,
           to send invitations to your friends!
         </Typography>
-        <Box width={1} textAlign="center">
+        <Box textAlign="center" width={1}>
           <Button
             color="primary"
+            onClick={() => onDownloadPDF()}
             variant="outlined"
-            onClick={() => onDownloadPDF()}>
+          >
             Download Pass
           </Button>
         </Box>
         <Grid className={classes.gridContainer} container spacing={3}>
           {selectedSeats.map((seat, index) => (
-            <Grid item xs={12} md={6} lg={4} key={'seat-' + index}>
+            <Grid item key={'seat-' + index} lg={4} md={6} xs={12}>
               <TextField
                 fullWidth
-                label="email"
-                name={`${convertToAlphabet(seat[0])}-${seat[1]}`}
                 helperText={`Please select an Email for Row : ${convertToAlphabet(
                   seat[0]
                 )} - Seat Number : ${seat[1]}`}
+                label="email"
                 margin="dense"
+                name={`${convertToAlphabet(seat[0])}-${seat[1]}`}
+                onChange={event => onSetInvitation(event)}
                 required
                 value={
                   invitations[`${convertToAlphabet(seat[0])}-${seat[1]}`] || ''
                 }
                 variant="outlined"
-                onChange={event => onSetInvitation(event)}
               />
             </Grid>
           ))}
-          <Grid item xs={12} container>
+          <Grid container item xs={12}>
             <Grid item>
               <Button
-                disabled={notValidInvitations}
                 color="primary"
+                disabled={notValidInvitations}
+                onClick={() => sendInvitations()}
                 variant="outlined"
-                onClick={() => sendInvitations()}>
+              >
                 Send Invitations
               </Button>
             </Grid>
@@ -87,8 +90,9 @@ export default function BookingInvitation(props) {
               <Button
                 className={classes.ignoreButton}
                 color="secondary"
+                onClick={() => ignore()}
                 variant="outlined"
-                onClick={() => ignore()}>
+              >
                 Ignore
               </Button>
             </Grid>

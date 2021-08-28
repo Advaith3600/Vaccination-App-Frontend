@@ -33,11 +33,11 @@ const FileUpload = props => {
         accept="image/*"
         className={classes.input}
         id="icon-button-file"
-        type="file"
         onChange={onUpload}
+        type="file"
       />
       <label htmlFor="icon-button-file">
-        <Button variant="outlined" className={classes.button} component="span">
+        <Button className={classes.button} component="span" variant="outlined">
           Upload
         </Button>
       </label>

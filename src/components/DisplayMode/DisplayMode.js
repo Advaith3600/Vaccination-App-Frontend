@@ -17,7 +17,8 @@ const DisplayMode = props => {
           [classes.option]: true,
           [classes.optionSelected]: mode === 'grid'
         })}
-        onClick={onChange}>
+        onClick={onChange}
+      >
         <AppsIcon className={classes.displayIcon} />
       </span>
       <span className={classes.divider} />
@@ -26,7 +27,8 @@ const DisplayMode = props => {
           [classes.option]: true,
           [classes.optionSelected]: mode === 'list'
         })}
-        onClick={onChange}>
+        onClick={onChange}
+      >
         <ListIcon className={classes.displayIcon} />
       </span>
     </div>

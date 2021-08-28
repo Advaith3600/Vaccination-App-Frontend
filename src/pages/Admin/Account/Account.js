@@ -30,18 +30,18 @@ class Account extends Component {
           <Grid item lg={4} md={6} xl={4} xs={12}>
             <AccountProfile
               file={image}
-              user={user}
               onUpload={event => {
                 const file = event.target.files[0];
                 this.setState({ image: file });
               }}
+              user={user}
             />
           </Grid>
           <Grid item lg={8} md={6} xl={8} xs={12}>
             <AccountDetails
               file={image}
-              user={user}
               uploadImage={uploadImage}
+              user={user}
             />
           </Grid>
         </Grid>

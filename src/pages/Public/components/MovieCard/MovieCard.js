@@ -9,14 +9,15 @@ const MovieCard = props => {
   const { classes, movie } = props;
 
   return (
-    <Link to={`movie/${movie._id}`} style={{ textDecoration: 'none' }}>
+    <Link style={{ textDecoration: 'none' }} to={`movie/${movie._id}`}>
       <div className={classes.card}>
         <header
           className={classes.header}
           style={{
             backgroundImage: `url(${movie.image})`
-          }}>
-          <Typography className={classes.h4} variant="h4" color="inherit">
+          }}
+        >
+          <Typography className={classes.h4} color="inherit" variant="h4">
             {movie.genre}
           </Typography>
         </header>

@@ -44,7 +44,8 @@ const TotalReservations = props => {
               className={classes.title}
               color="inherit"
               gutterBottom
-              variant="body2">
+              variant="body2"
+            >
               TOTAL RESERVATIONS
             </Typography>
             <Typography color="inherit" variant="h3">

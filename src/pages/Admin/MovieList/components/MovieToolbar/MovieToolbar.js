@@ -42,23 +42,25 @@ class MovieToolbar extends Component {
           <div className={classes.row}>
             <SearchInput
               className={classes.searchInput}
+              onChange={onChangeSearch}
               placeholder="Search movie"
               value={search}
-              onChange={onChangeSearch}
             />
             <Button
-              onClick={() => this.OpenAddDialog()}
               color="primary"
+              onClick={() => this.OpenAddDialog()}
               size="small"
-              variant="outlined">
+              variant="outlined"
+            >
               Add
             </Button>
           </div>
         </div>
         <ResponsiveDialog
+          handleClose={() => this.CloseAddDialog()}
           id="Add-movie"
           open={openAddDialog}
-          handleClose={() => this.CloseAddDialog()}>
+        >
           <AddMovie />
         </ResponsiveDialog>
       </Fragment>

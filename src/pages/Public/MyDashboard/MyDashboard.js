@@ -52,22 +52,23 @@ function MyDashboard(props) {
             <Grid item xs={12}>
               <Typography
                 className={classes.title}
+                color="inherit"
                 variant="h2"
-                color="inherit">
+              >
                 My Reservations
               </Typography>
             </Grid>
             <Grid item xs={12}>
               <MyReservationTable
-                reservations={myReservations}
-                movies={movies}
                 cinemas={cinemas}
+                movies={movies}
+                reservations={myReservations}
               />
             </Grid>
           </>
         )}
         <Grid item xs={12}>
-          <Typography className={classes.title} variant="h2" color="inherit">
+          <Typography className={classes.title} color="inherit" variant="h2">
             My Account
           </Typography>
         </Grid>

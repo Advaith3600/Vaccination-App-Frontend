@@ -54,7 +54,8 @@ const TotalCinemas = props => {
               className={classes.title}
               color="textSecondary"
               gutterBottom
-              variant="body2">
+              variant="body2"
+            >
               TOTAL CINEMAS
             </Typography>
             <Typography variant="h3">{cinemas}</Typography>

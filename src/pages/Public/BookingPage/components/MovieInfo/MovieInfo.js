@@ -56,7 +56,7 @@ export default function MovieInfo(props) {
   if (!movie) return <h1>Movie Loading...</h1>;
 
   return (
-    <Grid item xs={12} md={12} lg={3}>
+    <Grid item lg={3} md={12} xs={12}>
       <div className={classes.movieInfos}>
         <div
           className={classes.background}
@@ -68,30 +68,30 @@ export default function MovieInfo(props) {
         <div className={classes.info}>
           {movie.director && (
             <div className={classes.infoBox}>
-              <Typography variant="subtitle1" color="inherit">
+              <Typography color="inherit" variant="subtitle1">
                 Director
               </Typography>
-              <Typography variant="caption" color="inherit">
+              <Typography color="inherit" variant="caption">
                 {movie.director}
               </Typography>
             </div>
           )}
           {movie.cast && (
             <div className={classes.infoBox}>
-              <Typography variant="subtitle1" color="inherit">
+              <Typography color="inherit" variant="subtitle1">
                 Cast
               </Typography>
-              <Typography variant="caption" color="inherit">
+              <Typography color="inherit" variant="caption">
                 {movie.cast}
               </Typography>
             </div>
           )}
           {movie.genre && (
             <div className={classes.infoBox}>
-              <Typography variant="subtitle1" color="inherit">
+              <Typography color="inherit" variant="subtitle1">
                 Genre
               </Typography>
-              <Typography variant="caption" color="inherit">
+              <Typography color="inherit" variant="caption">
                 {movie.genre}
               </Typography>
             </div>

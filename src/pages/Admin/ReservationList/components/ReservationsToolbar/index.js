@@ -28,9 +28,9 @@ class ReservationsToolbar extends Component {
         <div className={classes.row}>
           <SearchInput
             className={classes.searchInput}
+            onChange={onChangeSearch}
             placeholder="Search reservation by Phone"
             value={search}
-            onChange={onChangeSearch}
           />
           <DisplayMode mode={mode} onChange={onChangeMode} />
         </div>

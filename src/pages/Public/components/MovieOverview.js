@@ -24,15 +24,16 @@ const useStyles = makeStyles({
 
 const Stats = ({ stats, classes }) =>
   stats.map((stat, index) => (
-    <Box key={`${stat.label}-${index}`} display="flex" alignItems="center">
+    <Box alignItems="center" display="flex" key={`${stat.label}-${index}`}>
       <Typography
         className={classes.label}
         color="inherit"
         gutterBottom
-        variant="subtitle1">
+        variant="subtitle1"
+      >
         {stat.label}
       </Typography>
-      <Typography color="inherit" variant="body2" gutterBottom>
+      <Typography color="inherit" gutterBottom variant="body2">
         {stat.value}
       </Typography>
     </Box>
@@ -44,18 +45,18 @@ const MovieOverview = ({ title, description, image }) => {
     <Grid container spacing={5}>
       <Grid item>
         <ButtonBase className={classes.image}>
-          <img className={classes.img} alt="movie" src={image} />
+          <img alt="movie" className={classes.img} src={image} />
         </ButtonBase>
       </Grid>
-      <Grid item xs={8} container direction="column" spacing={2}>
+      <Grid container direction="column" item spacing={2} xs={8}>
         <Grid item>
           <Typography color="inherit" gutterBottom variant="h2">
             {title}
           </Typography>
-          <Typography color="inherit" variant="body1" gutterBottom>
+          <Typography color="inherit" gutterBottom variant="body1">
             {description}
           </Typography>
-          <Typography variant="body2" color="textSecondary">
+          <Typography color="textSecondary" variant="body2">
             ID: 1030114
           </Typography>
           <Box height={20} />

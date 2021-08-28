@@ -54,7 +54,8 @@ const TotalUsers = props => {
               className={classes.title}
               color="textSecondary"
               gutterBottom
-              variant="body2">
+              variant="body2"
+            >
               TOTAL USERS
             </Typography>
             <Typography variant="h3">{users}</Typography>

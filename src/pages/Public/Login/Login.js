@@ -72,7 +72,8 @@ class Login extends Component {
             <div className={classes.contentHeader}>
               <IconButton
                 className={classes.backButton}
-                onClick={this.handleBack}>
+                onClick={this.handleBack}
+              >
                 <ArrowBackIcon />
               </IconButton>
             </div>

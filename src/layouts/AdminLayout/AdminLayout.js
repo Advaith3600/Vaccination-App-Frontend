@@ -38,24 +38,26 @@ class AdminLayout extends Component {
     return (
       <Fragment>
         <Topbar
-          title={title}
           ToolbarClasses={classes.topbar}
           isSidebarOpen={isOpen}
           onToggleSidebar={this.handleToggleOpen}
+          title={title}
         />
         <Drawer
           anchor="left"
           classes={{ paper: classes.drawerPaper }}
-          open={isOpen}
           onClose={this.handleClose}
-          variant="persistent">
+          open={isOpen}
+          variant="persistent"
+        >
           <Sidebar className={classes.sidebar} />
         </Drawer>
         <main
           className={classnames({
             [classes.contentShift]: isOpen,
             [classes.content]: true
-          })}>
+          })}
+        >
           {children}
           <Footer />
         </main>

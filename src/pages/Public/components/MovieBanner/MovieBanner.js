@@ -35,47 +35,51 @@ function MovieBanner(props) {
       <div className={classes.infoSection}>
         <header className={classes.movieHeader}>
           {fullDescription && (
-            <Box mb={3} display="flex" alignItems="center" flexWrap="wrap">
+            <Box alignItems="center" display="flex" flexWrap="wrap" mb={3}>
               {movie.genre.split(',').map((genre, index) => (
                 <Typography
-                  key={`${genre}-${index}`}
                   className={classes.tag}
+                  color="inherit"
+                  key={`${genre}-${index}`}
                   variant="body1"
-                  color="inherit">
+                >
                   {genre}
                 </Typography>
               ))}
 
               <StyledRating
-                value={4}
+                emptyIcon={<StarBorderIcon fontSize="inherit" />}
                 readOnly
                 size="small"
-                emptyIcon={<StarBorderIcon fontSize="inherit" />}
+                value={4}
               />
             </Box>
           )}
           <Typography
             className={classes.movieTitle}
+            color="inherit"
             variant="h1"
-            color="inherit">
+          >
             {movie.title}
           </Typography>
           <Typography
             className={classes.descriptionText}
+            color="inherit"
             variant="body1"
-            color="inherit">
+          >
             {textTruncate(movie.description, 450)}
           </Typography>
-          <Typography className={classes.director} variant="h4" color="inherit">
+          <Typography className={classes.director} color="inherit" variant="h4">
             By: {movie.director}
           </Typography>
           <Typography
             className={classes.duration}
+            color="inherit"
             variant="body1"
-            color="inherit">
+          >
             {movie.duration} min
           </Typography>
-          <Typography className={classes.genre} variant="body1" color="inherit">
+          <Typography className={classes.genre} color="inherit" variant="body1">
             {movie.genre}
           </Typography>
         </header>
@@ -88,14 +92,14 @@ function MovieBanner(props) {
       />
       <div className={classes.movieActions}>
         {fullDescription ? (
-          <Link to={`booking/${movie._id}`} style={{ textDecoration: 'none' }}>
-            <Button variant="contained" className={classes.button}>
+          <Link style={{ textDecoration: 'none' }} to={`booking/${movie._id}`}>
+            <Button className={classes.button} variant="contained">
               Buy Tickets
               <ArrowRightAlt className={classes.buttonIcon} />
             </Button>
           </Link>
         ) : (
-          <Link to={`movie/${movie._id}`} style={{ textDecoration: 'none' }}>
+          <Link style={{ textDecoration: 'none' }} to={`movie/${movie._id}`}>
             <Button className={classnames(classes.button, classes.learnMore)}>
               Learn More
               <ArrowRightAlt className={classes.buttonIcon} />

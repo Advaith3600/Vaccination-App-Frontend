@@ -11,18 +11,19 @@ const LatestMovieList = props => {
   const { classes, movies } = props;
 
   return (
-    <Container maxWidth="xl" className={classes.container}>
+    <Container className={classes.container} maxWidth="xl">
       <Grid
+        alignItems="center"
         className={classes.fullHeight}
         container
-        alignItems="center"
-        spacing={1}>
+        spacing={1}
+      >
         <Grid item md={3} xs={12}>
           <div className={classes.title}>
-            <Typography className={classes.h2} variant="h2" color="inherit">
+            <Typography className={classes.h2} color="inherit" variant="h2">
               Latest Movies
             </Typography>
-            <Typography className={classes.h4} variant="h4" color="inherit">
+            <Typography className={classes.h4} color="inherit" variant="h4">
               Covering March & April 2019
             </Typography>
           </div>

@@ -93,7 +93,8 @@ class ShowtimesTable extends Component {
                     className={classes.tableRow}
                     hover
                     key={showtime._id}
-                    selected={selectedShowtimes.indexOf(showtime._id) !== -1}>
+                    selected={selectedShowtimes.indexOf(showtime._id) !== -1}
+                  >
                     <TableCell className={classes.tableCell}>
                       <div className={classes.tableCellInner}>
                         <Checkbox
@@ -106,7 +107,8 @@ class ShowtimesTable extends Component {
                         />
                         <Typography
                           className={classes.nameText}
-                          variant="body1">
+                          variant="body1"
+                        >
                           {showtime._id}
                         </Typography>
                       </div>

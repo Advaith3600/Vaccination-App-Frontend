@@ -21,7 +21,8 @@ const Portlet = props => {
       className={rootClassName}
       elevation={0}
       outlined
-      squared={false}>
+      squared={false}
+    >
       {children}
     </Paper>
   );

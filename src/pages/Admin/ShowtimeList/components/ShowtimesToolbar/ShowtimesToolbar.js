@@ -35,16 +35,18 @@ class ShowtimesToolbar extends Component {
             {selectedShowtimes.length > 0 && (
               <IconButton
                 className={classes.deleteButton}
-                onClick={deleteShowtime}>
+                onClick={deleteShowtime}
+              >
                 <DeleteIcon />
               </IconButton>
             )}
 
             <Button
-              onClick={() => toggleDialog()}
               color="primary"
+              onClick={() => toggleDialog()}
               size="small"
-              variant="outlined">
+              variant="outlined"
+            >
               {selectedShowtimes.length === 1 ? 'Edit' : 'Add'}
             </Button>
           </div>

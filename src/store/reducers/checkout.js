@@ -31,8 +31,8 @@ const setSelectedSeats = (state, seats) => {
   !seatExist
     ? (newSeats = [...state.selectedSeats, seats])
     : (newSeats = state.selectedSeats.filter(
-        seat => JSON.stringify(seat) !== JSON.stringify(seats)
-      ));
+      seat => JSON.stringify(seat) !== JSON.stringify(seats)
+    ));
 
   return {
     ...state,

@@ -110,24 +110,25 @@ class AddShowtime extends Component {
 
     return (
       <div className={rootClassName}>
-        <Typography variant="h4" className={classes.title}>
+        <Typography className={classes.title} variant="h4">
           {title}
         </Typography>
         <form autoComplete="off" noValidate>
           <div className={classes.field}>
             <TextField
-              fullWidth
-              select
               className={classes.textField}
+              fullWidth
               helperText="Please specify the Time"
               label="Time"
               margin="dense"
-              required
-              value={startAt}
-              variant="outlined"
               onChange={event =>
                 this.handleFieldChange('startAt', event.target.value)
-              }>
+              }
+              required
+              select
+              value={startAt}
+              variant="outlined"
+            >
               {['18:00', '19:00', '20:00', '21:00', ' 22:00', '23:00'].map(
                 time => (
                   <MenuItem key={`time-${time}`} value={time}>
@@ -139,17 +140,18 @@ class AddShowtime extends Component {
           </div>
           <div className={classes.field}>
             <TextField
-              fullWidth
-              select
               className={classes.textField}
+              fullWidth
               label="Movie"
               margin="dense"
-              required
-              value={movieId}
-              variant="outlined"
               onChange={event =>
                 this.handleFieldChange('movieId', event.target.value)
-              }>
+              }
+              required
+              select
+              value={movieId}
+              variant="outlined"
+            >
               {nowShowing.map(movie => (
                 <MenuItem key={movie._id} value={movie._id}>
                   {movie.title}
@@ -158,17 +160,18 @@ class AddShowtime extends Component {
             </TextField>
 
             <TextField
-              fullWidth
-              select
               className={classes.textField}
+              fullWidth
               label="Cinema"
               margin="dense"
-              required
-              value={cinemaId}
-              variant="outlined"
               onChange={event =>
                 this.handleFieldChange('cinemaId', event.target.value)
-              }>
+              }
+              required
+              select
+              value={cinemaId}
+              variant="outlined"
+            >
               {cinemas.map(cinema => (
                 <MenuItem key={cinema._id} value={cinema._id}>
                   {cinema.name}
@@ -180,33 +183,33 @@ class AddShowtime extends Component {
           <div className={classes.field}>
             <MuiPickersUtilsProvider utils={MomentUtils}>
               <KeyboardDatePicker
-                className={classes.textField}
-                inputVariant="outlined"
-                margin="normal"
-                id="start-date"
-                label="Start Date"
-                minDate={new Date()}
-                maxDate={this.onFilterMaxDate()}
-                value={startDate}
-                onChange={date => this.handleFieldChange('startDate', date._d)}
                 KeyboardButtonProps={{
                   'aria-label': 'change date'
                 }}
+                className={classes.textField}
+                id="start-date"
+                inputVariant="outlined"
+                label="Start Date"
+                margin="normal"
+                maxDate={this.onFilterMaxDate()}
+                minDate={new Date()}
+                onChange={date => this.handleFieldChange('startDate', date._d)}
+                value={startDate}
               />
 
               <KeyboardDatePicker
-                className={classes.textField}
-                inputVariant="outlined"
-                margin="normal"
-                id="end-date"
-                label="End Date"
-                minDate={new Date(startDate)}
-                maxDate={this.onFilterMaxDate()}
-                value={endDate}
-                onChange={date => this.handleFieldChange('endDate', date._d)}
                 KeyboardButtonProps={{
                   'aria-label': 'change date'
                 }}
+                className={classes.textField}
+                id="end-date"
+                inputVariant="outlined"
+                label="End Date"
+                margin="normal"
+                maxDate={this.onFilterMaxDate()}
+                minDate={new Date(startDate)}
+                onChange={date => this.handleFieldChange('endDate', date._d)}
+                value={endDate}
               />
             </MuiPickersUtilsProvider>
           </div>
@@ -215,8 +218,9 @@ class AddShowtime extends Component {
         <Button
           className={classes.buttonFooter}
           color="primary"
+          onClick={submitAction}
           variant="contained"
-          onClick={submitAction}>
+        >
           {submitButton}
         </Button>
       </div>

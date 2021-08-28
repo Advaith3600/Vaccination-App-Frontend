@@ -44,8 +44,8 @@ class CinemaList extends Component {
     return (
       <div className={classes.root}>
         <CinemaToolbar
-          search={this.state.search}
           onChangeSearch={e => this.setState({ search: e.target.value })}
+          search={this.state.search}
         />
         <div className={classes.content}>
           {filteredCinemas.length === 0 ? (
@@ -58,8 +58,9 @@ class CinemaList extends Component {
                   key={cinema._id}
                   lg={4}
                   md={6}
+                  onClick={() => this.openEditDialog(cinema)}
                   xs={12}
-                  onClick={() => this.openEditDialog(cinema)}>
+                >
                   <CinemaCard cinema={cinema} />
                 </Grid>
               ))}
@@ -67,9 +68,10 @@ class CinemaList extends Component {
           )}
         </div>
         <ResponsiveDialog
+          handleClose={() => this.CloseEditDialog()}
           id="Edit-cinema"
           open={this.state.openEditDialog}
-          handleClose={() => this.CloseEditDialog()}>
+        >
           <AddCinema
             editCinema={editCinema}
             handleClose={() => this.CloseEditDialog()}

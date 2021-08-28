@@ -49,8 +49,8 @@ class User extends Component {
       <UsersTable
         onSelect={selectUser}
         onSelectAll={selectAllUsers}
-        users={users}
         selectedUsers={selectedUsers}
+        users={users}
       />
     );
   }
@@ -69,19 +69,20 @@ class User extends Component {
     return (
       <div className={classes.root}>
         <UsersToolbar
-          users={users}
+          deleteUser={() => deleteUser(selectedUsers[0])}
           selectedUsers={selectedUsers}
           toggleDialog={toggleUserDialog}
-          deleteUser={() => deleteUser(selectedUsers[0])}
+          users={users}
         />
         <div className={classes.content}>{this.renderUsers()}</div>
         <ResponsiveDialog
+          handleClose={() => toggleUserDialog()}
           id="Add-user"
           open={openDialog}
-          handleClose={() => toggleUserDialog()}>
+        >
           <AddUser
-            selectedUser={users.find(user => user._id === selectedUsers[0])}
             addUser={addUser}
+            selectedUser={users.find(user => user._id === selectedUsers[0])}
             updateUser={updateUser}
           />
         </ResponsiveDialog>

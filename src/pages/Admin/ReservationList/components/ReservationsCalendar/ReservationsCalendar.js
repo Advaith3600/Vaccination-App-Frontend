@@ -30,13 +30,13 @@ class ReservationsCalendar extends Component {
     return (
       <FullCalendar
         defaultView="dayGridMonth"
+        events={events}
         header={{
           left: 'prev,next today',
           center: 'title',
           right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
         }}
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-        events={events}
       />
     );
   }

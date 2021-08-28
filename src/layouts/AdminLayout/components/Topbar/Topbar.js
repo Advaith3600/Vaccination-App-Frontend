@@ -45,9 +45,10 @@ class Topbar extends Component {
           <div className={classes.brandWrapper}>
             <div className={classes.logo}>Cinema +</div>
             <IconButton
-              className={classes.menuButton}
               aria-label="Menu"
-              onClick={onToggleSidebar}>
+              className={classes.menuButton}
+              onClick={onToggleSidebar}
+            >
               {isSidebarOpen ? <CloseIcon /> : <MenuIcon />}
             </IconButton>
           </div>
@@ -58,14 +59,16 @@ class Topbar extends Component {
 
           <IconButton
             className={classes.notificationsButton}
-            onClick={() => console.log('Notification')}>
+            onClick={() => console.log('Notification')}
+          >
             <Badge badgeContent={4} color="primary" variant="dot">
               <NotificationsIcon />
             </Badge>
           </IconButton>
           <IconButton
             className={classes.signOutButton}
-            onClick={this.handleSignOut}>
+            onClick={this.handleSignOut}
+          >
             <InputIcon />
           </IconButton>
         </Toolbar>

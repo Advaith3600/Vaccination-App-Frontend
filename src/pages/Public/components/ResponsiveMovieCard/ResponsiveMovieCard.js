@@ -12,32 +12,36 @@ const MovieCard = props => {
   const { classes, movie } = props;
 
   return (
-    <Link to={`/movie/${movie._id}`} style={{ textDecoration: 'none' }}>
+    <Link style={{ textDecoration: 'none' }} to={`/movie/${movie._id}`}>
       <Paper className={classes.movieCard} elevation={20}>
         <div className={classes.infoSection}>
           <header className={classes.movieHeader}>
             <Typography
               className={classes.movieTitle}
+              color="inherit"
               variant="h1"
-              color="inherit">
+            >
               {movie.title}
             </Typography>
             <Typography
               className={classes.director}
+              color="inherit"
               variant="h4"
-              color="inherit">
+            >
               By: {movie.director}
             </Typography>
             <Typography
               className={classes.duration}
+              color="inherit"
               variant="body1"
-              color="inherit">
+            >
               {movie.duration} min
             </Typography>
             <Typography
               className={classes.genre}
+              color="inherit"
               variant="body1"
-              color="inherit">
+            >
               {movie.genre}
             </Typography>
           </header>
@@ -45,8 +49,9 @@ const MovieCard = props => {
           <div className={classes.description}>
             <Typography
               className={classes.descriptionText}
+              color="inherit"
               variant="body1"
-              color="inherit">
+            >
               {textTruncate(movie.description, 250)}
             </Typography>
           </div>

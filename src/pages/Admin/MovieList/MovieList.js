@@ -36,8 +36,9 @@ class MovieList extends Component {
             key={movie._id}
             lg={4}
             md={6}
+            onClick={() => this.props.onSelectMovie(movie)}
             xs={12}
-            onClick={() => this.props.onSelectMovie(movie)}>
+          >
             <MovieCard movie={movie} />
           </Grid>
         ))}
@@ -50,14 +51,15 @@ class MovieList extends Component {
     return (
       <div className={classes.root}>
         <MovieToolbar
-          search={this.state.search}
           onChangeSearch={e => this.setState({ search: e.target.value })}
+          search={this.state.search}
         />
         <div className={classes.content}>{this.renderMovies()}</div>
         <ResponsiveDialog
+          handleClose={() => this.props.onSelectMovie(null)}
           id="Edit-movie"
           open={Boolean(selectedMovie)}
-          handleClose={() => this.props.onSelectMovie(null)}>
+        >
           <AddMovie edit={selectedMovie} />
         </ResponsiveDialog>
       </div>

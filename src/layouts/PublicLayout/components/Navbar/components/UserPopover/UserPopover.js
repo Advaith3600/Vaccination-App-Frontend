@@ -23,18 +23,19 @@ export default function UserPopover(props) {
         <PersonIcon fontSize="large" />
       </IconButton>
       <Popover
-        id={id}
-        open={open}
         anchorEl={anchorEl}
-        onClose={handleClose}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'center'
         }}
+        id={id}
+        onClose={handleClose}
+        open={open}
         transformOrigin={{
           vertical: 'top',
           horizontal: 'center'
-        }}>
+        }}
+      >
         {props.children}
       </Popover>
     </>

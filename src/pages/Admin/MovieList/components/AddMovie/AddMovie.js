@@ -116,7 +116,7 @@ class AddMovie extends Component {
 
     return (
       <div className={rootClassName}>
-        <Typography variant="h4" className={classes.title}>
+        <Typography className={classes.title} variant="h4">
           {subtitle}
         </Typography>
         <form autoComplete="off" noValidate>
@@ -126,27 +126,28 @@ class AddMovie extends Component {
               helperText="Please specify the title"
               label="Title"
               margin="dense"
-              required
-              value={title}
-              variant="outlined"
               onChange={event =>
                 this.handleFieldChange('title', event.target.value)
               }
+              required
+              value={title}
+              variant="outlined"
             />
           </div>
           <div className={classes.field}>
             <Select
-              multiple
-              displayEmpty
               className={classes.textField}
+              displayEmpty
               label="Genre"
               margin="dense"
+              multiple
+              onChange={event =>
+                this.handleFieldChange('genre', event.target.value)
+              }
               required
               value={genre}
               variant="outlined"
-              onChange={event =>
-                this.handleFieldChange('genre', event.target.value)
-              }>
+            >
               {genreData.map((genreItem, index) => (
                 <MenuItem key={genreItem + '-' + index} value={genreItem}>
                   {genreItem}
@@ -156,31 +157,32 @@ class AddMovie extends Component {
           </div>
           <div className={classes.field}>
             <TextField
-              fullWidth
-              multiline
               className={classes.textField}
+              fullWidth
               label="Description"
               margin="dense"
-              required
-              variant="outlined"
-              value={description}
+              multiline
               onChange={event =>
                 this.handleFieldChange('description', event.target.value)
               }
+              required
+              value={description}
+              variant="outlined"
             />
           </div>
           <div className={classes.field}>
             <TextField
-              select
               className={classes.textField}
               label="Language"
               margin="dense"
-              required
-              value={language}
-              variant="outlined"
               onChange={event =>
                 this.handleFieldChange('language', event.target.value)
-              }>
+              }
+              required
+              select
+              value={language}
+              variant="outlined"
+            >
               {languageData.map((langItem, index) => (
                 <MenuItem key={langItem + '-' + index} value={langItem}>
                   {langItem}
@@ -192,12 +194,12 @@ class AddMovie extends Component {
               className={classes.textField}
               label="Duration"
               margin="dense"
-              type="number"
-              value={duration}
-              variant="outlined"
               onChange={event =>
                 this.handleFieldChange('duration', event.target.value)
               }
+              type="number"
+              value={duration}
+              variant="outlined"
             />
           </div>
           <div className={classes.field}>
@@ -205,53 +207,53 @@ class AddMovie extends Component {
               className={classes.textField}
               label="Director"
               margin="dense"
-              required
-              value={director}
-              variant="outlined"
               onChange={event =>
                 this.handleFieldChange('director', event.target.value)
               }
+              required
+              value={director}
+              variant="outlined"
             />
             <TextField
               className={classes.textField}
               label="Cast"
               margin="dense"
-              required
-              value={cast}
-              variant="outlined"
               onChange={event =>
                 this.handleFieldChange('cast', event.target.value)
               }
+              required
+              value={cast}
+              variant="outlined"
             />
           </div>
           <div className={classes.field}>
             <MuiPickersUtilsProvider utils={MomentUtils}>
               <KeyboardDatePicker
+                KeyboardButtonProps={{
+                  'aria-label': 'change date'
+                }}
                 className={classes.textField}
-                inputVariant="outlined"
-                margin="normal"
                 id="release-date"
+                inputVariant="outlined"
                 label="Release Date"
-                value={releaseDate}
+                margin="normal"
                 onChange={date =>
                   this.handleFieldChange('releaseDate', date._d)
                 }
-                KeyboardButtonProps={{
-                  'aria-label': 'change date'
-                }}
+                value={releaseDate}
               />
 
               <KeyboardDatePicker
-                className={classes.textField}
-                inputVariant="outlined"
-                margin="normal"
-                id="end-date"
-                label="End Date"
-                value={endDate}
-                onChange={date => this.handleFieldChange('endDate', date._d)}
                 KeyboardButtonProps={{
                   'aria-label': 'change date'
                 }}
+                className={classes.textField}
+                id="end-date"
+                inputVariant="outlined"
+                label="End Date"
+                margin="normal"
+                onChange={date => this.handleFieldChange('endDate', date._d)}
+                value={endDate}
               />
             </MuiPickersUtilsProvider>
           </div>
@@ -270,16 +272,18 @@ class AddMovie extends Component {
         <Button
           className={classes.buttonFooter}
           color="primary"
+          onClick={submitAction}
           variant="contained"
-          onClick={submitAction}>
+        >
           {submitButton}
         </Button>
         {this.props.edit && (
           <Button
-            color="secondary"
             className={classes.buttonFooter}
+            color="secondary"
+            onClick={this.onRemoveMovie}
             variant="contained"
-            onClick={this.onRemoveMovie}>
+          >
             Delete Movie
           </Button>
         )}

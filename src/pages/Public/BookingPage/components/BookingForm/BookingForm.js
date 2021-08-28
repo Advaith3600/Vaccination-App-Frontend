@@ -26,12 +26,13 @@ export default function BookingForm(props) {
   if (!cinemas.length)
     return (
       <Box
-        display="flex"
-        width={1}
-        height={1}
         alignItems="center"
-        justifyContent="center">
-        <Typography align="center" variant="h2" color="inherit">
+        display="flex"
+        height={1}
+        justifyContent="center"
+        width={1}
+      >
+        <Typography align="center" color="inherit" variant="h2">
           No Cinema Available.
         </Typography>
       </Box>
@@ -42,11 +43,12 @@ export default function BookingForm(props) {
       <Grid item xs>
         <TextField
           fullWidth
+          label="Select Cinema"
+          onChange={onChangeCinema}
           select
           value={selectedCinema}
-          label="Select Cinema"
           variant="outlined"
-          onChange={onChangeCinema}>
+        >
           {cinemas.map(cinema => (
             <MenuItem key={cinema._id} value={cinema._id}>
               {cinema.name}
@@ -58,18 +60,18 @@ export default function BookingForm(props) {
         <Grid item xs>
           <MuiPickersUtilsProvider utils={MomentUtils}>
             <KeyboardDatePicker
-              inputVariant="outlined"
-              margin="none"
-              fullWidth
-              id="start-date"
-              label="Start Date"
-              minDate={new Date(showtime.startDate)}
-              maxDate={new Date(showtime.endDate)}
-              value={selectedDate}
-              onChange={date => onChangeDate(date._d)}
               KeyboardButtonProps={{
                 'aria-label': 'change date'
               }}
+              fullWidth
+              id="start-date"
+              inputVariant="outlined"
+              label="Start Date"
+              margin="none"
+              maxDate={new Date(showtime.endDate)}
+              minDate={new Date(showtime.startDate)}
+              onChange={date => onChangeDate(date._d)}
+              value={selectedDate}
             />
           </MuiPickersUtilsProvider>
         </Grid>
@@ -78,11 +80,12 @@ export default function BookingForm(props) {
         <Grid item xs>
           <TextField
             fullWidth
+            label="Select Time"
+            onChange={onChangeTime}
             select
             value={selectedTime}
-            label="Select Time"
             variant="outlined"
-            onChange={onChangeTime}>
+          >
             {times.map((time, index) => (
               <MenuItem key={time + '-' + index} value={time}>
                 {time}

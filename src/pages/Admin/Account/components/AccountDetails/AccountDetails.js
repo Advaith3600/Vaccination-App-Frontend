@@ -79,23 +79,23 @@ class Account extends Component {
                 helperText="Please specify the first name"
                 label="FUll Name"
                 margin="dense"
-                required
-                value={name}
-                variant="outlined"
                 onChange={event =>
                   this.handleFieldChange('name', event.target.value)
                 }
+                required
+                value={name}
+                variant="outlined"
               />
               <TextField
                 className={classes.textField}
                 label="Email Address"
                 margin="dense"
-                required
-                value={email}
-                variant="outlined"
                 onChange={event =>
                   this.handleFieldChange('email', event.target.value)
                 }
+                required
+                value={email}
+                variant="outlined"
               />
             </div>
             <div className={classes.field}>
@@ -103,23 +103,23 @@ class Account extends Component {
                 className={classes.textField}
                 label="Phone Number"
                 margin="dense"
-                type="number"
-                value={phone}
-                variant="outlined"
                 onChange={event =>
                   this.handleFieldChange('phone', event.target.value)
                 }
+                type="number"
+                value={phone}
+                variant="outlined"
               />
               <TextField
                 className={classes.textField}
                 label="Password"
                 margin="dense"
-                type="password"
-                value={password}
-                variant="outlined"
                 onChange={event =>
                   this.handleFieldChange('password', event.target.value)
                 }
+                type="password"
+                value={password}
+                variant="outlined"
               />
             </div>
           </form>
@@ -127,8 +127,9 @@ class Account extends Component {
         <PortletFooter className={classes.portletFooter}>
           <Button
             color="primary"
+            onClick={this.onUpdateUser}
             variant="contained"
-            onClick={this.onUpdateUser}>
+          >
             Save details
           </Button>
         </PortletFooter>

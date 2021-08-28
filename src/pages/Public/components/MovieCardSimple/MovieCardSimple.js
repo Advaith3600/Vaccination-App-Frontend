@@ -29,7 +29,7 @@ const MovieCardSimple = props => {
   const { movie } = props;
 
   return (
-    <Link to={`movie/${movie._id}`} style={{ textDecoration: 'none' }}>
+    <Link style={{ textDecoration: 'none' }} to={`movie/${movie._id}`}>
       <Card className={classes.card}>
         <CardActionArea>
           <CardMedia
@@ -40,10 +40,11 @@ const MovieCardSimple = props => {
           <CardContent>
             <Typography
               className={classes.h5}
+              color="inherit"
+              component="h2"
               gutterBottom
               variant="h5"
-              component="h2"
-              color="inherit">
+            >
               {movie.title}
             </Typography>
           </CardContent>

@@ -20,10 +20,11 @@ const UsersToolbar = props => {
             </IconButton>
           )}
           <Button
-            onClick={toggleDialog}
             color="primary"
+            onClick={toggleDialog}
             size="small"
-            variant="outlined">
+            variant="outlined"
+          >
             {selectedUsers.length === 1 ? 'Edit' : 'Add'}
           </Button>
         </div>

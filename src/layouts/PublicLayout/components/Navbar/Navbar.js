@@ -26,28 +26,29 @@ class Navbar extends Component {
   };
 
   render() {
-    const { showMenu, scrollPos } = this.state;
-    const { classes, isAuth, user, logout } = this.props;
+    const { scrollPos } = this.state;
+    const { classes, isAuth, logout } = this.props;
     return (
       <Fragment>
         <nav
           className={classnames({
             [classes.navbar]: true,
             [classes.navbarColor]: scrollPos > 30
-          })}>
-          <Link className={classes.logoLink} to='/'>
-            <Typography className={classes.logo} variant='h2'>
+          })}
+        >
+          <Link className={classes.logoLink} to="/">
+            <Typography className={classes.logo} variant="h2">
               Vaccination App
             </Typography>
           </Link>
 
           <div className={classes.navLinks}>
             {isAuth ? (
-              <Link className={classes.navLink} onClick={logout} to='/'>
+              <Link className={classes.navLink} onClick={logout} to="/">
                 Logout
               </Link>
             ) : (
-              <Link className={classes.navLink} to='/login'>
+              <Link className={classes.navLink} to="/login">
                 Login
               </Link>
             )}
