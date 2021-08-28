@@ -5,7 +5,6 @@ const pageCursors = () => {
   cursor3 = document.getElementById('cursor3');
   //Page cursors
   document
-    .getElementsByTagName('body')[0]
     .addEventListener('mousemove', function(event) {
       cursor1.style.left = event.clientX + 'px';
       cursor1.style.top = event.clientY + 'px';

@@ -1,8 +1,5 @@
 export default theme => ({
   navbar: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
     width: '100%',
     padding: '1.25rem 20px',
     display: 'flex',

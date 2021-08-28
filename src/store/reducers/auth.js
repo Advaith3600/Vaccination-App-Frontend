@@ -22,8 +22,8 @@ export default (state = initialState, action) => {
       return { ...state, user: payload, isAuthenticated: true, loading: false };
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
-      localStorage.setItem('jwtToken', payload.token);
-      return { ...state, ...payload, isAuthenticated: true, loading: false };
+      localStorage.setItem('jwtToken', payload?.token);
+      return { ...state, user: payload, isAuthenticated: true, loading: false };
     case REGISTER_FAIL:
     case LOGIN_FAIL:
     case AUTH_ERROR:

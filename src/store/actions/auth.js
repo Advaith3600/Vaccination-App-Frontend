@@ -10,6 +10,8 @@ import {
 import { setAlert } from './alert';
 import { setAuthHeaders, setUser, removeUser, isLoggedIn } from '../../utils';
 
+const BACKEND_URL = process.env.BACKEND_URL || 'https://vaccinationapp.herokuapp.com';
+
 export const uploadImage = (id, image) => async dispatch => {
   try {
     const data = new FormData();
@@ -32,20 +34,20 @@ export const uploadImage = (id, image) => async dispatch => {
 };
 
 // Login user
-export const login = (username, password) => async dispatch => {
+export const login = (email, password) => async dispatch => {
   try {
-    const url = '/users/login';
+    const url = BACKEND_URL + '/api/auth/signin';
     const response = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({ email, password })
     });
     const responseData = await response.json();
     if (response.ok) {
-      const { user } = responseData;
+      const user = responseData;
       user && setUser(user);
       dispatch({ type: LOGIN_SUCCESS, payload: responseData });
-      dispatch(setAlert(`Welcome ${user.name}`, 'success', 5000));
+      dispatch(setAlert(`Welcome ${user.userFullName}`, 'success', 5000));
     }
     if (responseData.error) {
       dispatch({ type: LOGIN_FAIL });
@@ -123,7 +125,7 @@ export const register = ({
   password
 }) => async dispatch => {
   try {
-    const url = '/users';
+    const url = '/api/auth/register';
     const body = { name, username, email, phone, password };
     const response = await fetch(url, {
       method: 'POST',
