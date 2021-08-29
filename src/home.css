@@ -1,0 +1,42 @@
+
+.Home {
+    text-align: center;
+}
+
+.cardcl {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.formdata {
+    margin: 92px;
+    padding: 33px;
+    min-width: 340px;
+    align-items: center;
+    border-radius: var(--radius);
+    background: white;
+    box-shadow: var(--light-shadow);
+}
+
+@media only screen and (max-width: 600px) {
+    .hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .formdata {
+        margin: 25px;
+        padding: 13px;
+        min-width: 240px;
+        background-color: rgb(255, 255, 255);
+    }
+}
