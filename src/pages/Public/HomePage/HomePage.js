@@ -11,7 +11,7 @@ import styles from './styles';
 
 import LoginForm from '../Login/components/LoginForm';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   container: {
     maxWidth: '1000px',
     margin: '6rem auto'

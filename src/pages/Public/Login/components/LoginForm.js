@@ -48,7 +48,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary
   },
   registerUrl: {
-    marginLeft: '0.5rem',
+    marginLeft: '0.25rem',
     color: theme.palette.primary.main,
     fontWeight: 'bold',
     '&:hover': {
@@ -75,7 +75,6 @@ function LoginForm(props) {
 
   useEffect(() => {
     if (isAuthenticated && redirect) {
-      console.log(user, 'here');
       if (user && user.role === 'superadmin')
         return history.push('/admin/dashboard');
       return history.push('/');
@@ -88,8 +87,16 @@ function LoginForm(props) {
       [e.target.name]: e.target.value
     });
 
+  const handleLogin = event => {
+    event.preventDefault();
+    props.login(values.email, values.password);
+  }
+
   return (
-    <form className={classes.form}>
+    <form
+      className={classes.form}
+      onSubmit={handleLogin}
+    >
       <Typography className={classes.title} variant="h2">
         Sign in
       </Typography>
@@ -118,8 +125,8 @@ function LoginForm(props) {
       <Button
         className={classes.loginButton}
         color="primary"
-        onClick={() => props.login(values.email, values.password)}
         size="large"
+        type="submit"
         variant="contained"
       >
         Login now

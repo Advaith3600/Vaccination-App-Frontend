@@ -12,7 +12,7 @@ export default theme => ({
     }
   },
   bg: {
-    backgroundColor: theme.palette.common.neutral,
+    backgroundImage: 'url(https://source.unsplash.com/featured/?hospital)',
     height: '100%',
     display: 'flex',
     justifyContent: 'center',
@@ -20,7 +20,7 @@ export default theme => ({
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    opacity: 0.5
+    opacity: 0.75
   },
 
   content: {
@@ -84,7 +84,7 @@ export default theme => ({
     alignItems: 'center'
   },
   policyCheckbox: {
-    marginLeft: '-14px'
+    marginLeft: '-12px'
   },
   policyText: {
     display: 'inline',

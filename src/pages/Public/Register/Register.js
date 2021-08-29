@@ -14,7 +14,6 @@ import {
 } from '@material-ui/core';
 import { ArrowBack as ArrowBackIcon } from '@material-ui/icons';
 import styles from './styles';
-import FileUpload from '../../../components/FileUpload/FileUpload';
 
 class Register extends Component {
   state = {
@@ -33,6 +32,11 @@ class Register extends Component {
     const { isAuthenticated, history } = this.props;
     if (prevProps.isAuthenticated !== isAuthenticated || isAuthenticated)
       history.push('/');
+  }
+
+  componentDidMount() {
+    const { isAuthenticated, history } = this.props;
+    if (isAuthenticated) history.push('/');
   }
 
   handleBack = () => {
@@ -87,19 +91,9 @@ class Register extends Component {
                       label="Full name"
                       name="name"
                       onChange={event =>
-                        this.handleFieldChange('name', event.target.value)
+                        this.handleFieldChange('userFullName', event.target.value)
                       }
-                      value={values.name}
-                      variant="outlined"
-                    />
-                    <TextField
-                      className={classes.textField}
-                      label="User name"
-                      name="username"
-                      onChange={event =>
-                        this.handleFieldChange('username', event.target.value)
-                      }
-                      value={values.username}
+                      value={values.userFullName}
                       variant="outlined"
                     />
                     <TextField
@@ -131,14 +125,6 @@ class Register extends Component {
                       type="password"
                       value={values.password}
                       variant="outlined"
-                    />
-                    <FileUpload
-                      className={classes.upload}
-                      file={values.image}
-                      onUpload={event => {
-                        const file = event.target.files[0];
-                        this.handleFieldChange('image', file);
-                      }}
                     />
                     <div className={classes.policy}>
                       <Checkbox

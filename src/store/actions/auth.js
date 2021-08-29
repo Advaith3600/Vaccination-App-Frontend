@@ -37,6 +37,9 @@ export const uploadImage = (id, image) => async dispatch => {
 export const login = (email, password) => async dispatch => {
   try {
     const url = BACKEND_URL + '/api/auth/signin';
+    if (!email || !password)
+      return dispatch(setAlert('Email and/or password cannot be empty', 'error', 5000));
+    // const response = await axios.post(url, { email, password });
     const response = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -48,10 +51,9 @@ export const login = (email, password) => async dispatch => {
       user && setUser(user);
       dispatch({ type: LOGIN_SUCCESS, payload: responseData });
       dispatch(setAlert(`Welcome ${user.userFullName}`, 'success', 5000));
-    }
-    if (responseData.error) {
+    } else {
       dispatch({ type: LOGIN_FAIL });
-      dispatch(setAlert(responseData.error.message, 'error', 5000));
+      dispatch(setAlert(responseData, 'error', 5000));
     }
   } catch (error) {
     dispatch({ type: LOGIN_FAIL });
@@ -117,16 +119,14 @@ export const googleLogin = ({ profileObj }) => async dispatch => {
 
 // Register user
 export const register = ({
-  name,
-  username,
+  userFullName,
   email,
   phone,
-  image,
   password
 }) => async dispatch => {
   try {
-    const url = '/api/auth/register';
-    const body = { name, username, email, phone, password };
+    const url = BACKEND_URL + '/api/auth/register';
+    const body = { userFullName, email, phone, password };
     const response = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -134,15 +134,13 @@ export const register = ({
     });
     const responseData = await response.json();
     if (response.ok) {
-      const { user } = responseData;
+      const user = responseData;
       user && setUser(user);
-      if (image) dispatch(uploadImage(user._id, image)); // Upload image
       dispatch({ type: REGISTER_SUCCESS, payload: responseData });
       dispatch(setAlert('Register Success', 'success', 5000));
-    }
-    if (responseData._message) {
+    } else {
       dispatch({ type: REGISTER_FAIL });
-      dispatch(setAlert(responseData.message, 'error', 5000));
+      dispatch(setAlert(responseData, 'error', 5000));
     }
   } catch (error) {
     dispatch({ type: REGISTER_FAIL });
@@ -174,12 +172,11 @@ export const loadUser = () => async dispatch => {
 // Logout
 export const logout = () => async dispatch => {
   try {
-    const token = localStorage.getItem('jwtToken');
-    const url = '/users/logout';
+    const url = BACKEND_URL + '/api/auth/logout';
     const response = await fetch(url, {
       method: 'POST',
+      credentials: 'include',
       headers: {
-        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json'
       }
     });

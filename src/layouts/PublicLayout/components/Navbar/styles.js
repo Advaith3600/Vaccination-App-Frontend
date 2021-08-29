@@ -1,5 +1,7 @@
 export default theme => ({
   navbar: {
+    position: 'sticky',
+    top: '0',
     width: '100%',
     padding: '1.25rem 20px',
     display: 'flex',

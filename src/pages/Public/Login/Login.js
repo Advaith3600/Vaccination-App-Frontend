@@ -24,11 +24,11 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundImage: 'url(https://source.unsplash.com/featured/?cinema)',
+    backgroundImage: 'url(https://source.unsplash.com/featured/?hospital)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    opacity: 0.5
+    opacity: 0.75
   },
   content: {
     height: '100%',
