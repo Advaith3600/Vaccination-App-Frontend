@@ -3,17 +3,17 @@
 import React, { useState } from 'react';
 import data from './data';
 import SingleQuestion from './Question';
-import "./faq.css";
+import './faq.css';
 function Faq() {
-  const [questions, setQuestions] = useState(data);
+  const [questions] = useState(data);
   return (
     <main>
-      <div className='container'>
+      <div className="container">
         <h3>FAQ about vaccine </h3>
-        <section className='info'>
+        <section className="info">
           {questions.map((question) => {
             return (
-              <SingleQuestion key={question.id} {...question}></SingleQuestion>
+              <SingleQuestion key={question.id} {...question} />
             );
           })}
         </section>

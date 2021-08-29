@@ -1,28 +1,28 @@
-import { useEffect, useState } from "react";
-import "./App.css";
-import Appbar from "./Appbar";
-import Button from "@material-ui/core/Button";
-import Cardma from "./Cardma";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import vaccine from "./vaccine.svg";
-import Faq from "./Faq";
-import DateFnsUtils from "@date-io/date-fns";
+import { useEffect, useState } from 'react';
+import './App.css';
+import Appbar from './Appbar';
+import Button from '@material-ui/core/Button';
+import Cardma from './Cardma';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import vaccine from './vaccine.svg';
+import Faq from './Faq';
+import DateFnsUtils from '@date-io/date-fns';
 
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
-} from "@material-ui/pickers";
+} from '@material-ui/pickers';
 //const pin=window.prompt("Enter your Pincode: ");
 
 //413104
 //600053
-const deim = "06/05/2021";
+const deim = '06/05/2021';
 const useStyles = makeStyles({
   field: {
     marginTop: 20,
     marginBottom: 20,
-    display: "block",
+    display: 'block',
   },
 });
 function App() {
@@ -35,10 +35,10 @@ function App() {
   const handleDateChange = (date) => {
     console.log(date);
     const dateObj = date;
-    const month = String(dateObj.getMonth() + 1).padStart(2, "0");
-    const day = String(dateObj.getDate()).padStart(2, "0");
+    const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+    const day = String(dateObj.getDate()).padStart(2, '0');
     const year = dateObj.getFullYear();
-    const output = day + "/" + month + "/" + year;
+    const output = day + '/' + month + '/' + year;
     setSelectedDate(output);
   };
   const handleSubmit = (e) => {
@@ -71,34 +71,34 @@ function App() {
       <div className="hero">
         <div>
           <div className="formdata">
-            <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+            <form autoComplete="off" noValidate onSubmit={handleSubmit}>
               <TextField
+                className={classes.field}
+                fullWidth
+                label="Enter area Pincode"
                 onChange={(e) => {
                   setPind(e.target.value);
                 }}
-                className={classes.field}
-                label="Enter area Pincode"
-                variant="outlined"
-                fullWidth
                 required
                 type="number"
+                variant="outlined"
               />
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <KeyboardDatePicker
+                  KeyboardButtonProps={{
+                    'aria-label': 'change date',
+                  }}
                   disableToolbar
-                  variant="inline"
                   format="MM/dd/yyyy"
-                  margin="normal"
                   id="date-picker-inline"
                   label="Date of Appointment"
-                  value={selectedDate}
+                  margin="normal"
                   onChange={handleDateChange}
-                  KeyboardButtonProps={{
-                    "aria-label": "change date",
-                  }}
+                  value={selectedDate}
+                  variant="inline"
                 />
               </MuiPickersUtilsProvider>
-              <Button type="submit" color="primary" variant="contained">
+              <Button color="primary" type="submit" variant="contained">
                 Submit
               </Button>
             </form>
@@ -110,7 +110,7 @@ function App() {
       </div>
       <div className="cardcl">
         {arr.map((item) => {
-          return <Cardma key={item.center_id} item={item} />;
+          return <Cardma item={item} key={item.center_id} />;
         })}
       </div>
 

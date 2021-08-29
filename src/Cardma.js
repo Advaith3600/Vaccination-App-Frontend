@@ -1,22 +1,22 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import {  deepPurple } from "@material-ui/core/colors";
-import CardHeader from "@material-ui/core/CardHeader";
-import Slot from "./Slot";
-import Link from "@material-ui/core/Link";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import {  deepPurple } from '@material-ui/core/colors';
+import CardHeader from '@material-ui/core/CardHeader';
+import Slot from './Slot';
+import Link from '@material-ui/core/Link';
 const useStyles = makeStyles({
   root: {
-    margin: "3px",
+    margin: '3px',
 
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: " center",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: ' center',
+    alignItems: 'center',
   },
   head: {
     color: deepPurple[600],
@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     minHeight: 460,
     maxWidth: 510,
     
-    background:"linear-gradient(159deg, rgba(255,255,255,1) 0%, rgba(242,241,255,1) 74%, rgba(209,207,240,1) 96%)",
+    background:'linear-gradient(159deg, rgba(255,255,255,1) 0%, rgba(242,241,255,1) 74%, rgba(209,207,240,1) 96%)',
   },
 
   title: {
@@ -35,15 +35,15 @@ const useStyles = makeStyles({
     marginBottom: 12,
   },
   displ: {
-    display: "flex",
-    flexDirection: "row",
+    display: 'flex',
+    flexDirection: 'row',
   },
   slot: {
     fontSize: 14,
-    margin: "5px",
+    margin: '5px',
   },
   linkt: {
-    color: "white",
+    color: 'white',
   },
 });
 
@@ -54,14 +54,14 @@ export default function Cardma({ item }) {
   console.log(sessions);
   return (
     <div className={classes.root}>
-      <Card elevation={3} className={classes.rootcard}>
+      <Card className={classes.rootcard} elevation={3}>
         <CardHeader
-          title={item.name}
-          subheader={item.fee_type}
           className={classes.head}
+          subheader={item.fee_type}
+          title={item.name}
         />
         <CardContent>
-          <Typography variant="body2" color="textSecondary">
+          <Typography color="textSecondary" variant="body2">
             From {item.from} to {item.to}
           </Typography>
           {sessions.map((session) => {
@@ -69,11 +69,11 @@ export default function Cardma({ item }) {
           })}
         </CardContent>
         <CardActions>
-          <Button variant="contained" size="small" color="primary">
+          <Button color="primary" size="small" variant="contained">
             <Link
+              className={classes.linkt}
               href="https://selfregistration.cowin.gov.in/"
               underline="none"
-              className={classes.linkt}
             >
               Book Now
             </Link>
