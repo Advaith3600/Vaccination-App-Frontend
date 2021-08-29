@@ -17,7 +17,7 @@ import {
 
 //413104
 //600053
-const deim = '06/05/2021';
+const deim = '06/09/2021';
 const useStyles = makeStyles({
   field: {
     marginTop: 20,
@@ -45,24 +45,21 @@ function App() {
     e.preventDefault();
     setValue(!value);
   };
-  useEffect(() => {
-    const fetchMoviesBadStatus = async () => {
-      const response = await fetch(
-        `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${pind}&date=${selectedDate}`
-      );
+  useEffect(async () => {
+    const response = await fetch(
+      `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${pind}&date=${selectedDate}`
+    );
 
-      if (!response.ok) {
-        const message = `An error has occured: ${response.status}`;
-        throw new Error(message);
-      }
+    if (!response.ok) {
+      const message = `An error has occured: ${response.status}`;
+      alert(message);
+      throw new Error(message);
+    }
 
-      const data = await response.json();
-      console.log(data);
-      const vim = data.centers;
+    const data = await response.json();
+    console.log(data);
 
-      setArr(vim);
-    };
-    fetchMoviesBadStatus();
+    setArr(data.centers);
   }, [value]);
   
   return (

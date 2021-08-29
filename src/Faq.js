@@ -1,9 +1,8 @@
-
-  
 import React, { useState } from 'react';
 import data from './data';
 import SingleQuestion from './Question';
 import './faq.css';
+
 function Faq() {
   const [questions] = useState(data);
   return (

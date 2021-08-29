@@ -11,8 +11,7 @@ import Slot from './Slot';
 import Link from '@material-ui/core/Link';
 const useStyles = makeStyles({
   root: {
-    margin: '3px',
-
+    margin: '1rem',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: ' center',
@@ -24,10 +23,9 @@ const useStyles = makeStyles({
   rootcard: {
     minHeight: 460,
     maxWidth: 510,
-    
-    background:'linear-gradient(159deg, rgba(255,255,255,1) 0%, rgba(242,241,255,1) 74%, rgba(209,207,240,1) 96%)',
+    background:'white',
+    boxShadow: 'var(--light-shadow)',
   },
-
   title: {
     fontSize: 14,
   },
@@ -43,7 +41,7 @@ const useStyles = makeStyles({
     margin: '5px',
   },
   linkt: {
-    color: 'white',
+    color: 'white'
   },
 });
 
@@ -68,8 +66,8 @@ export default function Cardma({ item }) {
             return <Slot {...session} key={session.session_id}/>;
           })}
         </CardContent>
-        <CardActions>
-          <Button color="primary" size="small" variant="contained">
+        <CardActions style={{ paddingLeft: '1rem' }}>
+          <Button color="primary" size="small" style={{ padding: '0.5rem 1rem' }} variant="contained">
             <Link
               className={classes.linkt}
               href="https://selfregistration.cowin.gov.in/"

@@ -17,12 +17,13 @@ const useStyles = makeStyles({
     marginBottom: 12,
   },
   displ: {
-    display: 'flex',
-    flexDirection: 'row',
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gridGap: '0.5rem'
   },
   slot: {
     fontSize: 14,
-    margin: '5px',
+    marginTop: '0.5rem',
     background: (cap) => {
       if (cap < 10) {
         return red[300];
@@ -38,7 +39,7 @@ const useStyles = makeStyles({
       }
     },
     padding: '5px',
-    borderRadius: '7px',
+    borderRadius: 'var(--radius)',
   },
 });
 export default function Slot({ available_capacity, min_age_limit, date }) {

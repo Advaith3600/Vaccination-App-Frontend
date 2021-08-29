@@ -40,145 +40,168 @@
     --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     --max-width: 1170px;
     --fixed-width: 920px;
-  }
-  /*
-  =============== 
-  Global Styles
-  ===============
-  */
-  
+}
+
+/*
+===============
+Global Styles
+===============
+*/
 
 
-  ul {
+ul {
     list-style-type: none;
-  }
-  a {
+}
+
+a {
     text-decoration: none;
-  }
-  h1,
-  h2,
-  h3,
-  h4 {
+}
+
+h1,
+h2,
+h3,
+h4 {
     letter-spacing: var(--spacing);
     text-transform: capitalize;
     line-height: 1.25;
     margin-bottom: 0.75rem;
-  }
-  h1 {
+}
+
+h1 {
     font-size: 3rem;
-  }
-  h2 {
+}
+
+h2 {
     font-size: 2rem;
-  }
-  h3 {
+}
+
+h3 {
     font-size: 1.25rem;
-  }
-  h4 {
+}
+
+h4 {
     font-size: 0.875rem;
-  }
-  p {
+}
+
+p {
     margin-bottom: 1.25rem;
     color: var(--clr-grey-5);
-  }
-  @media screen and (min-width: 800px) {
+}
+
+@media screen and (min-width: 800px) {
     h1 {
-      font-size: 4rem;
+        font-size: 4rem;
     }
+
     h2 {
-      font-size: 2.5rem;
+        font-size: 2.5rem;
     }
+
     h3 {
-      font-size: 1.75rem;
+        font-size: 1.75rem;
     }
+
     h4 {
-      font-size: 1rem;
+        font-size: 1rem;
     }
+
     body {
-      font-size: 1rem;
+        font-size: 1rem;
     }
+
     h1,
     h2,
     h3,
     h4 {
-      line-height: 1;
+        line-height: 1;
     }
-  }
-  /*  global classes */
-  
-  /* section */
-  .section {
-      
+}
+
+/*  global classes */
+
+/* section */
+.section {
+
     width: 90vw;
     margin: 0 auto;
     max-width: var(--max-width);
-  }
-  
-  @media screen and (min-width: 992px) {
+}
+
+@media screen and (min-width: 992px) {
     .section {
-      width: 95vw;
+        width: 95vw;
     }
-  }
-  
-  /*
-  =============== 
-  Questions
-  ===============
-  */
-  
-  main {
+}
+
+/*
+===============
+Questions
+===============
+*/
+
+main {
     min-height: 100vh;
     /* using flex because of better browser support */
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .container {
+}
+
+.container {
     width: 90vw;
     margin: 5rem auto;
-    background-color: #ffffff;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='317' height='317' viewBox='0 0 200 200'%3E%3Cpolygon fill='%23f7f5fa' fill-opacity='0.75' points='100 0 0 100 100 100 100 200 200 100 200 0'/%3E%3C/svg%3E");
+    background: white;
     border-radius: var(--radius);
     padding: 2.5rem 2rem;
     max-width: var(--fixed-width);
     display: grid;
     gap: 1rem 2rem;
-  }
-  .container h3 {
+    box-shadow: var(--light-shadow);
+}
+
+.container h3 {
     line-height: 1.2;
     font-weight: 500;
-  }
-  @media screen and (min-width: 992px) {
+}
+
+@media screen and (min-width: 992px) {
     .container {
-      display: grid;
-      grid-template-columns: 250px 1fr;
+        display: grid;
+        grid-template-columns: 250px 1fr;
     }
-  }
-  .question {
+}
+
+.question {
     padding: 1rem 1.5rem;
     border: 2px solid var(--clr-grey-special);
     margin-bottom: 1rem;
     border-radius: var(--radius);
     box-shadow: var(--light-shadow);
-  }
-  .question h4 {
+    overflow: hidden;
+}
+
+.question h4 {
     text-transform: none;
     line-height: 1.5;
-  }
-  .question p {
+}
+
+.question p {
     color: var(--clr-grey-3);
-    margin-bottom: 0;
-    margin-top: 0.5rem;
-  }
-  .question header {
+    margin: 0;
+}
+
+.question header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  .question header h4 {
-    margin-bottom: 0;
-  }
-  .btn {
+}
+
+.question header h4 {
+    padding: 0.5rem 0;
+    margin: 0;
+}
+
+.btn {
     background: transparent;
     border-color: transparent;
     width: 2rem;
@@ -193,4 +216,4 @@
     margin-left: 1rem;
     align-self: center;
     min-width: 2rem;
-  }
+}
