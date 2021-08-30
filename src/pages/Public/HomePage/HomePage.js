@@ -67,24 +67,23 @@ const HomePage = ({ user, isAuth }) => {
     e.preventDefault();
     setValue(!value);
   };
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(
-        `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${pind}&date=${selectedDate}`
-      );
-      console.log(response);
+  useEffect(async () => {
+    const response = await fetch(
+      `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${pind}&date=${selectedDate}`
+    );
 
-      if (!response.ok) {
-        const message = `An error has occured: ${response.status}`;
-        alert(message);
-        throw new Error(message);
-      }
+    console.log(response);
 
-      const data = await response.json();
-      console.log(data);
-
-      setArr(data.centers);
+    if (!response.ok) {
+      const message = `An error has occured: ${response.status}`;
+      alert(message);
+      throw new Error(message);
     }
+
+    const data = await response.json();
+    console.log(data);
+
+    setArr(data.centers);
   }, [value]);
 
   return (
@@ -120,6 +119,7 @@ const HomePage = ({ user, isAuth }) => {
                   format="dd-MM-yyyy"
                   id="date-picker-inline"
                   margin="normal"
+                  //   label="Date of Appointment"
                   minDate
                   okLabel
                   onChange={handleDateChange}
