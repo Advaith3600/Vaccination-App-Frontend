@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { login } from '../../../../store/actions';
 import { history } from '../../../../utils';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   form: {
     paddingLeft: '100px',
     paddingRight: '100px',
@@ -72,31 +72,31 @@ function LoginForm(props) {
   const { isAuthenticated, user, redirect } = props;
   const classes = useStyles();
   const [values, setValues] = useState({ email: '', password: '' });
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (isAuthenticated && redirect) {
       if (user && user.role === 'superadmin')
         return history.push('/admin/dashboard');
-      return history.push('/');
+      if (count == 0) {
+        return history.push('/HomePage');
+      }
     }
   }, [isAuthenticated, user, redirect]);
 
-  const handleFieldChange = e =>
+  const handleFieldChange = (e) =>
     setValues({
       ...values,
       [e.target.name]: e.target.value
     });
 
-  const handleLogin = event => {
+  const handleLogin = (event) => {
     event.preventDefault();
     props.login(values.email, values.password);
-  }
+  };
 
   return (
-    <form
-      className={classes.form}
-      onSubmit={handleLogin}
-    >
+    <form className={classes.form} onSubmit={handleLogin}>
       <Typography className={classes.title} variant="h2">
         Sign in
       </Typography>
@@ -106,7 +106,7 @@ function LoginForm(props) {
           className={classes.textField}
           label="email"
           name="email"
-          onChange={event => handleFieldChange(event)}
+          onChange={(event) => handleFieldChange(event)}
           type="email"
           value={values.email}
           variant="outlined"
@@ -115,7 +115,7 @@ function LoginForm(props) {
           className={classes.textField}
           label="Password"
           name="password"
-          onChange={event => handleFieldChange(event)}
+          onChange={(event) => handleFieldChange(event)}
           type="password"
           value={values.password}
           variant="outlined"
@@ -127,8 +127,7 @@ function LoginForm(props) {
         color="primary"
         size="large"
         type="submit"
-        variant="contained"
-      >
+        variant="contained">
         Login now
       </Button>
       <Typography className={classes.register} variant="body1">
@@ -141,10 +140,8 @@ function LoginForm(props) {
   );
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isAuthenticated: state.authState.isAuthenticated,
   user: state.authState.user
 });
-export default connect(mapStateToProps, { login })(
-  LoginForm
-);
+export default connect(mapStateToProps, { login })(LoginForm);

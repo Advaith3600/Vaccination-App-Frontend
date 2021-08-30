@@ -36,7 +36,7 @@ const Routes = () => {
     <Suspense fallback={<Loading />}>
       <Router>
         <Switch>
-          <Route component={Login} exact path="/login" />
+          <Route component={Login} exact path="/" />
           <Route component={Register} exact path="/register" />
 
           <WithLayoutRoute
@@ -50,7 +50,7 @@ const Routes = () => {
             component={HomePage}
             exact
             layout={PublicLayout}
-            path="/"
+            path="/HomePage"
           />
           <WithLayoutRoute
             component={MyDashboard}

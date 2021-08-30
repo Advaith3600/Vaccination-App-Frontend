@@ -95,9 +95,7 @@ const HomePage = ({ user, isAuth }) => {
       {isAuth ? (
         <h3><div align="center">Welcome, You are now logged in as {user.userFullName}</div></h3>
       ) : (
-        <div className={classes.container}>
-          <LoginForm />
-        </div>
+        <h3><div align="center">You shoud not be here. Go back and login</div></h3>
       )}
       <div className="hero">
         <div>

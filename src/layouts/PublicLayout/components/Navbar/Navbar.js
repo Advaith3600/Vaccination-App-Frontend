@@ -44,7 +44,7 @@ class Navbar extends Component {
 
           <div className={classes.navLinks}>
             {isAuth && (
-              <Link className={classes.navLink} onClick={logout} to="/">
+              <Link className={classes.navLink} onClick={logout} to="/Homepage">
                 Logout
               </Link>
             )}
