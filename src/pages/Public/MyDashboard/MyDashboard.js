@@ -69,7 +69,7 @@ function MyDashboard(props) {
         )}
         <Grid item xs={12}>
           <Typography className={classes.title} color="inherit" variant="h2">
-            My Account
+            My Account 
           </Typography>
         </Grid>
         <Grid item xs={12}>

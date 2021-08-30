@@ -10,7 +10,7 @@ import {
 import { setAlert } from './alert';
 import { setAuthHeaders, setUser, removeUser, isLoggedIn } from '../../utils';
 
-const BACKEND_URL = process.env.BACKEND_URL || 'https://vaccinationapp.herokuapp.com';
+const BACKEND_URL = 'https://vaccinationapp.herokuapp.com';
 
 export const uploadImage = (id, image) => async dispatch => {
   try {
@@ -36,7 +36,7 @@ export const uploadImage = (id, image) => async dispatch => {
 // Login user
 export const login = (email, password) => async dispatch => {
   try {
-    const url = BACKEND_URL + '/api/auth/signin';
+    const url = BACKEND_URL + '/api/auth/signin/';
     if (!email || !password)
       return dispatch(setAlert('Email and/or password cannot be empty', 'error', 5000));
     // const response = await axios.post(url, { email, password });
