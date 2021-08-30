@@ -26,12 +26,12 @@ const useStyles = makeStyles({
     marginTop: '0.5rem',
     background: (cap) => {
       if (cap < 5) {
-        return red[300];
+        return red[600];
       } else if (cap > 5 && cap < 10) {
-        return orange[300];
+        return orange[600];
       }
       else {
-        return green[200];
+        return green[600];
       }
     },
     border: (cap) => {

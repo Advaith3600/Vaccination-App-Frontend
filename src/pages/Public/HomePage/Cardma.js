@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import {  deepPurple } from '@material-ui/core/colors';
+import { lightBlue } from '@material-ui/core/colors';
 import CardHeader from '@material-ui/core/CardHeader';
 import Slot from './Slot';
-import Link from '@material-ui/core/Link';
 const useStyles = makeStyles({
   root: {
     margin: '1rem',
@@ -18,12 +17,12 @@ const useStyles = makeStyles({
     alignItems: 'center',
   },
   head: {
-    color: deepPurple[600],
+    color: lightBlue[300],
   },
   rootcard: {
     minHeight: 460,
     maxWidth: 510,
-    background:'white',
+    background: 'rgb(36, 35, 35)',
     boxShadow: 'var(--light-shadow)',
   },
   title: {
@@ -45,11 +44,29 @@ const useStyles = makeStyles({
   },
 });
 
+
 export default function Cardma({ item }) {
   const classes = useStyles();
+  const [value, setValue] = useState(true);
+  const [postId, setPostId] = useState(null);
 
   const sessions = item.sessions;
   console.log(sessions);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setValue(!value);
+  };
+  useEffect(() => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title: 'React Hooks POST Request Example' })
+    };
+    fetch('https://vaccination-app-backend.herokuapp.com/api/pdf/pdf', requestOptions)
+      .then(response => response.json())
+      .then(data => setPostId(data.id));
+  }, []
+  );
   return (
     <div className={classes.root}>
       <Card className={classes.rootcard} elevation={3}>
@@ -60,22 +77,19 @@ export default function Cardma({ item }) {
         />
         <CardContent>
           <Typography color="textSecondary" variant="body2">
-            From {item.from} to {item.to}
+						From {item.from} to {item.to}
           </Typography>
           {sessions.map((session) => {
-            return <Slot {...session} key={session.session_id}/>;
+            return <Slot {...session} key={session.session_id} />;
           })}
         </CardContent>
         <CardActions style={{ paddingLeft: '1rem' }}>
-          <Button color="primary" size="small" style={{ padding: '0.5rem 1rem' }} variant="contained">
-            <Link
-              className={classes.linkt}
-              href="https://selfregistration.cowin.gov.in/"
-              underline="none"
-            >
-              Book Now
-            </Link>
-          </Button>
+          <form onSubmit={handleSubmit}>
+            <Button color="primary" type="submit" variant="contained">
+							Book Now
+            </Button>
+          </form>
+					Returned Id: {postId};
         </CardActions>
       </Card>
     </div>

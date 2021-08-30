@@ -67,24 +67,28 @@ const HomePage = ({ user, isAuth }) => {
     e.preventDefault();
     setValue(!value);
   };
-  useEffect(async () => {
-    const response = await fetch(
-      `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${pind}&date=${selectedDate}`
-    );
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(
+        `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${pind}&date=${selectedDate}`
+      );
 
-    console.log(response);
+      console.log(response);
 
-    if (!response.ok) {
-      const message = `An error has occured: ${response.status}`;
-      alert(message);
-      throw new Error(message);
+      if (!response.ok) {
+        const message = `An error has occured: ${response.status}`;
+        alert(message);
+        throw new Error(message);
+      }
+
+      const data = await response.json();
+      console.log(data);
+
+      setArr(data.centers);
     }
-
-    const data = await response.json();
-    console.log(data);
-
-    setArr(data.centers);
-  }, [value]);
+    fetchData();
+  }, [value]
+  );
 
   return (
     <Fragment>
