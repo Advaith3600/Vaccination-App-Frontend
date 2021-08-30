@@ -14,7 +14,7 @@ import {
 } from '@material-ui/core';
 import { ArrowBack as ArrowBackIcon } from '@material-ui/icons';
 import styles from './styles';
-import Additionalcomp from './additionalcomp'
+import Additionalcomp from './additionalcomp';
 
 class Register extends Component {
   state = {
@@ -80,20 +80,25 @@ class Register extends Component {
                   </Typography>
                   <div className={classes.fields}>
                     <TextField
+                      required
                       className={classes.textField}
                       label="Full name"
                       name="name"
-                      onChange={event =>
-                        this.handleFieldChange('userFullName', event.target.value)
+                      onChange={(event) =>
+                        this.handleFieldChange(
+                          'userFullName',
+                          event.target.value
+                        )
                       }
                       value={values.userFullName}
                       variant="outlined"
                     />
                     <TextField
+                      required
                       className={classes.textField}
                       label="Email address"
                       name="email"
-                      onChange={event =>
+                      onChange={(event) =>
                         this.handleFieldChange('email', event.target.value)
                       }
                       value={values.email}
@@ -101,20 +106,22 @@ class Register extends Component {
                     />
                     <Additionalcomp></Additionalcomp>
                     <TextField
+                      required
                       className={classes.textField}
-                      label="Mobile Phone"
+                      label="Mobile Number"
                       name="phone"
-                      onChange={event =>
+                      onChange={(event) =>
                         this.handleFieldChange('phone', event.target.value)
                       }
                       value={values.phone}
                       variant="outlined"
                     />
                     <TextField
+                      required
                       className={classes.textField}
                       label="Aadhar Number"
                       name="aadhar"
-                      onChange={event =>
+                      onChange={(event) =>
                         this.handleFieldChange('aadhar', event.target.value)
                       }
                       value={values.aadhar}
@@ -124,16 +131,17 @@ class Register extends Component {
                       className={classes.textField}
                       label="Address"
                       name="address"
-                      onChange={event =>
+                      onChange={(event) =>
                         this.handleFieldChange('address', event.target.value)
                       }
                       value={values.address}
                       variant="outlined"
                     />
                     <TextField
+                      required
                       className={classes.textField}
                       label="Password"
-                      onChange={event =>
+                      onChange={(event) =>
                         this.handleFieldChange('password', event.target.value)
                       }
                       type="password"
@@ -152,8 +160,7 @@ class Register extends Component {
                       />
                       <Typography
                         className={classes.policyText}
-                        variant="body1"
-                      >
+                        variant="body1">
                         I have read the &nbsp;
                         <Link className={classes.policyUrl} to="#">
                           Terms and Conditions
@@ -169,8 +176,7 @@ class Register extends Component {
                     disabled={!isValid}
                     onClick={this.handleRegister}
                     size="large"
-                    variant="contained"
-                  >
+                    variant="contained">
                     Register now
                   </Button>
 
@@ -197,7 +203,7 @@ Register.propTypes = {
   register: PropTypes.func.isRequired
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isAuthenticated: state.authState.isAuthenticated
 });
 

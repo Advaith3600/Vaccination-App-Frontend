@@ -55,6 +55,7 @@ function Additional() {
       </MuiPickersUtilsProvider>
       <br />
       <TextField
+        required
         id="outlined-select-gender"
         select
         label="Select"
