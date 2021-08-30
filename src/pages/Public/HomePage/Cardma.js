@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -7,7 +7,9 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { lightBlue } from '@material-ui/core/colors';
 import CardHeader from '@material-ui/core/CardHeader';
+// import axios from 'axios';
 import Slot from './Slot';
+
 const useStyles = makeStyles({
   root: {
     margin: '1rem',
@@ -42,31 +44,46 @@ const useStyles = makeStyles({
   linkt: {
     color: 'white'
   },
+  aadharCard: {
+    display: 'none'
+  },
 });
 
 
 export default function Cardma({ item }) {
   const classes = useStyles();
-  const [value, setValue] = useState(true);
-  const [postId, setPostId] = useState(null);
+  //   const [value, setValue] = useState(true);
 
   const sessions = item.sessions;
   console.log(sessions);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setValue(!value);
-  };
-  useEffect(() => {
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title: 'React Hooks POST Request Example' })
-    };
-    fetch('https://vaccination-app-backend.herokuapp.com/api/pdf/pdf', requestOptions)
-      .then(response => response.json())
-      .then(data => setPostId(data.id));
-  }, []
-  );
+  //   const fetchPDF = (e) => {
+  //     e.preventDefault();
+  //     axios.post('https://vaccination-app-backend.herokuapp.com/api/pdf/pdf', { 'aadharNumber': '768411442314' })
+  //       .then((response) => response.blob())
+  //       .then((blob) => {
+  //         // Create blob link to download
+  //         const url = window.URL.createObjectURL(
+  //           new Blob([blob]),
+  //         );
+  //         const link = document.createElement('a');
+  //         link.href = url;
+  //         link.setAttribute(
+  //           'download',
+  //           'FileName.pdf',
+  //         );
+
+  //         // Append to html link element page
+  //         document.body.appendChild(link);
+
+  //         // Start download
+  //         link.click();
+
+  //         // Clean up and remove the link
+  //         link.parentNode.removeChild(link);
+  //       });
+  //     console.log('Done');
+  //     setValue(!value);
+  //   };
   return (
     <div className={classes.root}>
       <Card className={classes.rootcard} elevation={3}>
@@ -84,12 +101,15 @@ export default function Cardma({ item }) {
           })}
         </CardContent>
         <CardActions style={{ paddingLeft: '1rem' }}>
-          <form onSubmit={handleSubmit}>
+          <form action="https://vaccination-app-backend.herokuapp.com/api/pdf/pdf" encType="application/json" method="post">
+            <div name="aadharCard">
+              <input name="aadharNumber" placeholder="aadharNumber" type="hidden" value="768411442314" />
+            </div>
+
             <Button color="primary" type="submit" variant="contained">
 							Book Now
             </Button>
           </form>
-					Returned Id: {postId};
         </CardActions>
       </Card>
     </div>
