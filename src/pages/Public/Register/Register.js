@@ -14,6 +14,7 @@ import {
 } from '@material-ui/core';
 import { ArrowBack as ArrowBackIcon } from '@material-ui/icons';
 import styles from './styles';
+import Additionalcomp from './additionalcomp'
 
 class Register extends Component {
   state = {
@@ -69,21 +70,13 @@ class Register extends Component {
           </Grid>
           <Grid className={classes.content} item lg={7} xs={12}>
             <div className={classes.content}>
-              <div className={classes.contentHeader}>
-                <IconButton
-                  className={classes.backButton}
-                  onClick={this.handleBack}
-                >
-                  <ArrowBackIcon />
-                </IconButton>
-              </div>
               <div className={classes.contentBody}>
                 <form className={classes.form}>
                   <Typography className={classes.title} variant="h2">
                     Create new account
                   </Typography>
                   <Typography className={classes.subtitle} variant="body1">
-                    Use your email to create new account... it's free.
+                    Enter the following fields to register in VaccineApp
                   </Typography>
                   <div className={classes.fields}>
                     <TextField
@@ -106,6 +99,7 @@ class Register extends Component {
                       value={values.email}
                       variant="outlined"
                     />
+                    <Additionalcomp></Additionalcomp>
                     <TextField
                       className={classes.textField}
                       label="Mobile Phone"
@@ -114,6 +108,26 @@ class Register extends Component {
                         this.handleFieldChange('phone', event.target.value)
                       }
                       value={values.phone}
+                      variant="outlined"
+                    />
+                    <TextField
+                      className={classes.textField}
+                      label="Aadhar Number"
+                      name="aadhar"
+                      onChange={event =>
+                        this.handleFieldChange('aadhar', event.target.value)
+                      }
+                      value={values.aadhar}
+                      variant="outlined"
+                    />
+                    <TextField
+                      className={classes.textField}
+                      label="Address"
+                      name="address"
+                      onChange={event =>
+                        this.handleFieldChange('address', event.target.value)
+                      }
+                      value={values.address}
                       variant="outlined"
                     />
                     <TextField

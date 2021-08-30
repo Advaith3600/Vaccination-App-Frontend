@@ -93,7 +93,7 @@ const HomePage = ({ user, isAuth }) => {
   return (
     <Fragment>
       {isAuth ? (
-        <div>You are logged in as {user.userFullName}</div>
+        <h3><div align="center">Welcome, You are now logged in as {user.userFullName}</div></h3>
       ) : (
         <div className={classes.container}>
           <LoginForm />
