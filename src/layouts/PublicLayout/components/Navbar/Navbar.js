@@ -36,16 +36,19 @@ class Navbar extends Component {
             [classes.navbarColor]: scrollPos > 30
           })}
         >
-          <Link className={classes.logoLink} to="/">
-            <Typography className={classes.logo} variant="h2">
-              Vaccination App
-            </Typography>
-          </Link>
+          <Typography className={classes.logo} variant="h2">
+            Vaccination App
+          </Typography>
 
           <div className={classes.navLinks}>
             {isAuth && (
               <Link className={classes.navLink} onClick={logout} to="/">
                 Logout
+              </Link>
+            )}
+            {!isAuth && (
+              <Link className={classes.navLink} to="/">
+                Sign In
               </Link>
             )}
           </div>
@@ -55,7 +58,7 @@ class Navbar extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isAuth: state.authState.isAuthenticated,
   user: state.authState.user
 });

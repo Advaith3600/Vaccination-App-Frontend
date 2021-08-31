@@ -7,7 +7,6 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { lightBlue } from '@material-ui/core/colors';
 import CardHeader from '@material-ui/core/CardHeader';
-import login from '../../../store/actions/auth'
 // import axios from 'axios';
 import Slot from './Slot';
 
@@ -17,39 +16,38 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: ' center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   head: {
-    color: lightBlue[300],
+    color: lightBlue[300]
   },
   rootcard: {
     minHeight: 460,
     maxWidth: 510,
     background: 'rgb(36, 35, 35)',
-    boxShadow: 'var(--light-shadow)',
+    boxShadow: 'var(--light-shadow)'
   },
   title: {
-    fontSize: 14,
+    fontSize: 14
   },
   pos: {
-    marginBottom: 12,
+    marginBottom: 12
   },
   displ: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   slot: {
     fontSize: 14,
-    margin: '5px',
+    margin: '5px'
   },
   linkt: {
     color: 'white'
   },
   aadharCard: {
     display: 'none'
-  },
+  }
 });
-
 
 export default function Cardma({ item }) {
   const classes = useStyles();
@@ -95,20 +93,29 @@ export default function Cardma({ item }) {
         />
         <CardContent>
           <Typography color="textSecondary" variant="body2">
-						From {item.from} to {item.to}
+            From {item.from} to {item.to}
           </Typography>
           {sessions.map((session) => {
             return <Slot {...session} key={session.session_id} />;
           })}
         </CardContent>
         <CardActions style={{ paddingLeft: '1rem' }}>
-          <form action="https://vaccination-app-backend.herokuapp.com/api/pdf/pdf" encType="application/json" method="post">
+          <form
+            action="https://vaccination-app-backend.herokuapp.com/api/pdf/pdf"
+            encType="application/json"
+            method="post"
+          >
             <div name="aadharCard">
-              <input name="aadharNumber" placeholder="aadharNumber" type="hidden" value={login.aadharNumber} />
+              <input
+                name="aadharNumber"
+                placeholder="aadharNumber"
+                type="hidden"
+                value="768411442314"
+              />
             </div>
 
             <Button color="primary" type="submit" variant="contained">
-							Book Now
+              Book Now
             </Button>
           </form>
         </CardActions>
