@@ -12,7 +12,7 @@ import { setAuthHeaders, setUser, removeUser, isLoggedIn } from '../../utils';
 
 const BACKEND_URL = 'https://vaccinationapp.herokuapp.com';
 
-export const uploadImage = (id, image) => async dispatch => {
+export const uploadImage = (id, image) => async (dispatch) => {
   try {
     const data = new FormData();
     data.append('file', image);
@@ -34,11 +34,13 @@ export const uploadImage = (id, image) => async dispatch => {
 };
 
 // Login user
-export const login = (email, password) => async dispatch => {
+export const login = (email, password) => async (dispatch) => {
   try {
     const url = BACKEND_URL + '/api/auth/signin/';
     if (!email || !password)
-      return dispatch(setAlert('Email and/or password cannot be empty', 'error', 5000));
+      return dispatch(
+        setAlert('Email and/or password cannot be empty', 'error', 5000)
+      );
     // const response = await axios.post(url, { email, password });
     const response = await fetch(url, {
       method: 'POST',
@@ -47,7 +49,7 @@ export const login = (email, password) => async dispatch => {
     });
     const responseData = await response.json();
     if (response.ok) {
-      const user = responseData;
+      var user = responseData;
       user && setUser(user);
       dispatch({ type: LOGIN_SUCCESS, payload: responseData });
       dispatch(setAlert(`Welcome ${user.userFullName}`, 'success', 5000));
@@ -61,100 +63,61 @@ export const login = (email, password) => async dispatch => {
   }
 };
 
-export const facebookLogin = e => async dispatch => {
-  try {
-    const { email, userID, name } = e;
-    const options = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, userID, name })
-    };
-    const url = '/users/login/facebook';
-    const response = await fetch(url, options);
-    const responseData = await response.json();
-
-    if (response.ok) {
-      const { user } = responseData;
-      user && setUser(user);
-      dispatch({ type: LOGIN_SUCCESS, payload: responseData });
-      dispatch(setAlert(`Welcome ${user.name}`, 'success', 5000));
-    }
-    if (responseData.error) {
-      dispatch({ type: LOGIN_FAIL });
-      dispatch(setAlert(responseData.error.message, 'error', 5000));
-    }
-  } catch (error) {
-    dispatch({ type: LOGIN_FAIL });
-    dispatch(setAlert(error.message, 'error', 5000));
-  }
-};
-
-export const googleLogin = ({ profileObj }) => async dispatch => {
-  try {
-    const { email, googleId, name } = profileObj;
-    const options = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, googleId, name })
-    };
-    const url = '/users/login/google';
-    const response = await fetch(url, options);
-    const responseData = await response.json();
-
-    if (response.ok) {
-      const { user } = responseData;
-      user && setUser(user);
-      dispatch({ type: LOGIN_SUCCESS, payload: responseData });
-      dispatch(setAlert(`Welcome ${user.name}`, 'success', 5000));
-    }
-    if (responseData.error) {
-      dispatch({ type: LOGIN_FAIL });
-      dispatch(setAlert(responseData.error.message, 'error', 5000));
-    }
-  } catch (error) {
-    dispatch({ type: LOGIN_FAIL });
-    dispatch(setAlert(error.message, 'error', 5000));
-  }
-};
-
 // Register user
-export const register = ({
-  userFullName,
-  email,
-  phone,
-  password
-}) => async dispatch => {
-  try {
-    const url = BACKEND_URL + '/api/auth/register';
-    const body = { userFullName, email, phone, password };
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
-    });
-    const responseData = await response.json();
-    if (response.ok) {
-      const user = responseData;
-      user && setUser(user);
-      dispatch({ type: REGISTER_SUCCESS, payload: responseData });
-      dispatch(setAlert('Register Success', 'success', 5000));
-    } else {
+export const register =
+  ({
+    userFullName,
+    aadharNumber,
+    email,
+    password,
+    mobileNumber,
+    address,
+    dob,
+    gender,
+    isAdmin
+  }) =>
+  async (dispatch) => {
+    try {
+      const url = BACKEND_URL + '/api/auth/register';
+      const body = {
+        userFullName,
+        aadharNumber,
+        email,
+        password,
+        mobileNumber,
+        address,
+        dob,
+        gender,
+        isAdmin
+      };
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      const responseData = await response.json();
+      if (response.ok) {
+        const user = responseData;
+        user && setUser(user);
+        dispatch({ type: REGISTER_SUCCESS, payload: responseData });
+        dispatch(setAlert('Register Success', 'success', 5000));
+      } else {
+        dispatch({ type: REGISTER_FAIL });
+        dispatch(setAlert(responseData, 'error', 5000));
+      }
+    } catch (error) {
       dispatch({ type: REGISTER_FAIL });
-      dispatch(setAlert(responseData, 'error', 5000));
+      dispatch(setAlert(error.message, 'error', 5000));
     }
-  } catch (error) {
-    dispatch({ type: REGISTER_FAIL });
-    dispatch(setAlert(error.message, 'error', 5000));
-  }
-};
+  };
 
 // Load user
-export const loadUser = () => async dispatch => {
+export const loadUser = () => async (dispatch) => {
   if (!isLoggedIn()) return;
   try {
-    const url = '/users/me';
+    const url = BACKEND_URL + '/api/auth/signin/';
     const response = await fetch(url, {
-      method: 'GET',
+      method: 'POST',
       headers: setAuthHeaders()
     });
     const responseData = await response.json();
@@ -170,7 +133,7 @@ export const loadUser = () => async dispatch => {
 };
 
 // Logout
-export const logout = () => async dispatch => {
+export const logout = () => async (dispatch) => {
   try {
     const url = BACKEND_URL + '/api/auth/logout';
     const response = await fetch(url, {
@@ -193,3 +156,4 @@ export const logout = () => async dispatch => {
     dispatch(setAlert(error.message, 'error', 5000));
   }
 };
+export default login;

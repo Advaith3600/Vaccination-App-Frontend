@@ -4,28 +4,24 @@ import { register } from '../../../store/actions';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
-import {
-  Button,
-  Checkbox,
-  Grid,
-  IconButton,
-  TextField,
-  Typography
-} from '@material-ui/core';
-import { ArrowBack as ArrowBackIcon } from '@material-ui/icons';
+import { Button,Checkbox, Grid, TextField, Typography } from '@material-ui/core';
 import styles from './styles';
 import Additionalcomp from './additionalcomp';
 
 class Register extends Component {
   state = {
     values: {
-      name: '',
-      username: '',
+      userFullName: '',
       email: '',
-      phone: '',
+      mobileNumber: '',
+      aadharNumber: '',
       password: '',
+      age: '',
+      dob: Additionalcomp.dob,
+      gender: Additionalcomp.gender,
+      address: '',
       image: null,
-      policy: false
+      isAdmin: true
     }
   };
 
@@ -59,9 +55,7 @@ class Register extends Component {
   render() {
     const { classes } = this.props;
     const { values } = this.state;
-
     const isValid = values.policy;
-
     return (
       <div className={classes.root}>
         <Grid className={classes.grid} container>
@@ -109,22 +103,28 @@ class Register extends Component {
                       required
                       className={classes.textField}
                       label="Mobile Number"
-                      name="phone"
+                      name="mobileNumber"
                       onChange={(event) =>
-                        this.handleFieldChange('phone', event.target.value)
+                        this.handleFieldChange(
+                          'mobileNumber',
+                          event.target.value
+                        )
                       }
-                      value={values.phone}
+                      value={values.mobileNumber}
                       variant="outlined"
                     />
                     <TextField
                       required
                       className={classes.textField}
                       label="Aadhar Number"
-                      name="aadhar"
+                      name="aadharNumber"
                       onChange={(event) =>
-                        this.handleFieldChange('aadhar', event.target.value)
+                        this.handleFieldChange(
+                          'aadharNumber',
+                          event.target.value
+                        )
                       }
-                      value={values.aadhar}
+                      value={values.aadharNumber}
                       variant="outlined"
                     />
                     <TextField
@@ -147,7 +147,7 @@ class Register extends Component {
                       type="password"
                       value={values.password}
                       variant="outlined"
-                    />
+                    />{' '}
                     <div className={classes.policy}>
                       <Checkbox
                         checked={values.policy}

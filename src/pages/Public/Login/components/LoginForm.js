@@ -72,15 +72,12 @@ function LoginForm(props) {
   const { isAuthenticated, user, redirect } = props;
   const classes = useStyles();
   const [values, setValues] = useState({ email: '', password: '' });
-  const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (isAuthenticated && redirect) {
       if (user && user.role === 'superadmin')
         return history.push('/admin/dashboard');
-      if (count == 0) {
-        return history.push('/HomePage');
-      }
+      return history.push('/HomePage');
     }
   }, [isAuthenticated, user, redirect]);
 
@@ -93,6 +90,7 @@ function LoginForm(props) {
   const handleLogin = (event) => {
     event.preventDefault();
     props.login(values.email, values.password);
+    //var loginDetails = {email: values.email, password: values.password}
   };
 
   return (

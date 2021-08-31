@@ -7,7 +7,6 @@ import './additionalcomp.css';
 import MenuItem from '@material-ui/core/MenuItem';
 import {
   MuiPickersUtilsProvider,
-  KeyboardTimePicker,
   KeyboardDatePicker
 } from '@material-ui/pickers';
 const currencies = [
@@ -18,19 +17,15 @@ const currencies = [
   {
     value: 'Male',
     label: 'Male'
-  },
-  {
-    value: 'Prefer not to say',
-    label: 'Prefer not to say'
   }
 ];
 
 function Additional() {
   // The first commit of Material-UI
-  const [selectedDate, setSelectedDate] = React.useState(new Date());
+  const [dob, setdob] = React.useState(new Date());
   const [gender, setGender] = React.useState();
   const handleDateChange = (date) => {
-    setSelectedDate(date);
+    setdob(date);
   };
   const handleChange = (event) => {
     setGender(event.target.value);
@@ -45,7 +40,7 @@ function Additional() {
             id="date-picker-dialog"
             label="Enter your Date of Birth"
             format="dd/MM/yyyy"
-            value={selectedDate}
+            value={dob}
             onChange={handleDateChange}
             KeyboardButtonProps={{
               'aria-label': 'change date'

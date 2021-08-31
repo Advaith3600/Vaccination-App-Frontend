@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { lightBlue } from '@material-ui/core/colors';
 import CardHeader from '@material-ui/core/CardHeader';
+import login from '../../../store/actions/auth'
 // import axios from 'axios';
 import Slot from './Slot';
 
@@ -103,7 +104,7 @@ export default function Cardma({ item }) {
         <CardActions style={{ paddingLeft: '1rem' }}>
           <form action="https://vaccination-app-backend.herokuapp.com/api/pdf/pdf" encType="application/json" method="post">
             <div name="aadharCard">
-              <input name="aadharNumber" placeholder="aadharNumber" type="hidden" value="768411442314" />
+              <input name="aadharNumber" placeholder="aadharNumber" type="hidden" value={login.aadharNumber} />
             </div>
 
             <Button color="primary" type="submit" variant="contained">

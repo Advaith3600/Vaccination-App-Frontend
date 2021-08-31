@@ -12,8 +12,6 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 
-import LoginForm from '../Login/components/LoginForm';
-
 import {
   getMovies,
   getShowtimes,
@@ -95,7 +93,7 @@ const HomePage = ({ user, isAuth }) => {
       {isAuth ? (
         <h3><div align="center">Welcome, You are now logged in as {user.userFullName}</div></h3>
       ) : (
-        <h3><div align="center">You shoud not be here. Go back and login</div></h3>
+        <h3><div align="center">Hello Guest, You can check for vaccine slots here</div></h3>
       )}
       <div className="hero">
         <div>
